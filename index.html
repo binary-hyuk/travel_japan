@@ -352,7 +352,8 @@ const textOf = html => { const d = document.createElement("div"); d.innerHTML = 
 
 const CATS = G.categories;
 const catRank = s => { const i = CATS.findIndex(c => c.id === s.cat); return i < 0 ? CATS.length : i; };
-const SECTIONS = G.sections.slice().sort((a, b) => catRank(a) - catRank(b));
+const rank = s => catRank(s) * 1000 + (s.order ?? 500);
+const SECTIONS = G.sections.slice().sort((a, b) => rank(a) - rank(b));
 const byId = Object.fromEntries(SECTIONS.map(s => [s.id, s]));
 const catOf = s => CATS.find(c => c.id === s.cat) || CATS[0];
 
@@ -362,7 +363,7 @@ const phraseSection = {
   lead: "일정 순서대로 쓸 문장을 먼저 모았고, 그 아래에 각 페이지의 회화를 붙였어요. ‘크게 보기’를 누르면 화면 가득 일본어가 떠서 직원에게 그대로 보여줄 수 있어요. ○○ 자리엔 예약자 이름을 넣어 말하세요.",
   blocks: () => [...(G.phrasebook || []), { type: "text", title: "페이지별 회화 모음", html: "<p class=\"muted\">아래는 각 페이지 맨 끝에 있는 회화를 모은 거예요.</p>" }, ...SECTIONS.flatMap(s => (s.blocks || []).filter(b => b.type === "phrases").map(b => ({ ...b, title: `${s.ko} · ${b.title || "회화"}` })))]
 };
-const ALL = [...SECTIONS, phraseSection].sort((a, b) => catRank(a) - catRank(b));
+const ALL = [...SECTIONS, phraseSection].sort((a, b) => rank(a) - rank(b));
 byId.phrases = phraseSection;
 const ORDER = ALL.map(s => s.id);
 const blocksOf = s => typeof s.blocks === "function" ? s.blocks() : (s.blocks || []);
