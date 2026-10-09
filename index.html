@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>후쿠오카 가족여행 가이드</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B6B73">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="후쿠오카">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap">
@@ -345,6 +352,7 @@ mark.hit{scroll-margin-top:120px}
 (() => {
 "use strict";
 const G = window.GUIDE;
+const imgSrc = p => (window.OFFLINE_IMG && window.OFFLINE_IMG[p]) || p;
 try { history.scrollRestoration = "manual"; } catch {}
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -387,7 +395,7 @@ const R = {
         : `<li class="leg ${st.mode === "walk" ? "walk" : ""}" style="--c:var(${(MODES[st.mode] || MODES.walk)[1]})"><span class="mode">${esc((MODES[st.mode] || MODES.walk)[0])}</span>${st.text}${st.time ? `<span class="t">${esc(st.time)}</span>` : ""}${st.note ? `<small>${st.note}</small>` : ""}</li>`).join("")}</ol>
       ${b.note ? `<p class="note">${b.note}</p>` : ""}</div>`,
   items: b => { const anyImg = b.items.some(x => x.img); return `${h3(b)}<div class="items ${b.wide ? "wide" : ""}">${b.items.map(it => `<article class="item">
-      ${!it.img && anyImg ? `<figure class="ph" aria-hidden="true"><span>${esc(it.jp ? it.jp.split(" · ")[0] : it.name)}</span></figure>` : ""}${it.img ? `<figure data-zoom="${esc(it.img)}" data-cap="${esc(it.name + (it.credit ? " · " + it.credit : ""))}" data-src="${esc(it.srcUrl || "")}"><img src="${esc(it.img)}" alt="${esc(it.name)}" loading="lazy">${it.credit ? `<figcaption>${esc(it.credit)}</figcaption>` : ""}</figure>` : ""}
+      ${!it.img && anyImg ? `<figure class="ph" aria-hidden="true"><span>${esc(it.jp ? it.jp.split(" · ")[0] : it.name)}</span></figure>` : ""}${it.img ? `<figure data-zoom="${esc(it.img)}" data-cap="${esc(it.name + (it.credit ? " · " + it.credit : ""))}" data-src="${esc(it.srcUrl || "")}"><img src="${esc(imgSrc(it.img))}" alt="${esc(it.name)}" loading="lazy">${it.credit ? `<figcaption>${esc(it.credit)}</figcaption>` : ""}</figure>` : ""}
       <div class="item-body">
         <h4>${esc(it.name)}</h4>${it.jp ? `<div class="jp">${esc(it.jp)}</div>` : ""}
         ${it.tags ? `<div class="item-meta">${it.tags.map(t => tagHtml(t)).join("")}</div>` : ""}
@@ -395,7 +403,7 @@ const R = {
         ${it.caution ? `<div class="item-caution">${it.caution}</div>` : ""}
         ${it.link ? `<a class="item-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.linkLabel || "공식 페이지")} ↗</a>` : ""}
       </div></article>`).join("")}</div>${noteHtml(b)}`; },
-  gallery: b => `${h3(b)}<div class="gallery">${b.images.map(im => `<figure><img src="${esc(im.src)}" alt="${esc(im.caption)}" loading="lazy" data-zoom="${esc(im.src)}" data-cap="${esc(im.caption + (im.credit ? " · " + im.credit : ""))}" data-src="${esc(im.srcUrl || "")}"><figcaption>${esc(im.caption)}${im.credit ? ` · ${esc(im.credit)}` : ""}</figcaption></figure>`).join("")}</div>${noteHtml(b)}`,
+  gallery: b => `${h3(b)}<div class="gallery">${b.images.map(im => `<figure><img src="${esc(imgSrc(im.src))}" alt="${esc(im.caption)}" loading="lazy" data-zoom="${esc(im.src)}" data-cap="${esc(im.caption + (im.credit ? " · " + im.credit : ""))}" data-src="${esc(im.srcUrl || "")}"><figcaption>${esc(im.caption)}${im.credit ? ` · ${esc(im.credit)}` : ""}</figcaption></figure>`).join("")}</div>${noteHtml(b)}`,
   timeline: b => `${h3(b)}<ol class="timeline">${b.items.map(it => `<li class="${esc(it.tone || "")}"><span class="tm">${esc(it.time)}</span><b>${esc(it.title)}</b>${it.html ? `<div class="prose">${it.html}</div>` : ""}</li>`).join("")}</ol>${noteHtml(b)}`,
   phrases: b => `${h3(b)}<div class="phrases">${b.items.map(p => `<div class="phrase"><div class="p-ko">${esc(p.ko)}</div><div class="p-jp">${esc(p.jp)}</div><div class="p-pr">${esc(p.pron || "")}</div><div class="p-act"><button class="mini-btn" data-show="${esc(p.jp)}" data-sub="${esc(p.ko)}">크게 보기</button><button class="mini-btn" data-copy="${esc(p.jp)}">복사</button></div></div>`).join("")}</div>${noteHtml(b)}`,
   say: b => `<div class="say"><div class="say-h">꼭 쓰는 한마디</div>${b.items.map(p => `<div class="say-row"><div class="say-txt"><span class="say-k">${esc(p.ko)}</span><span class="say-j">${esc(p.jp)}</span><span class="say-p">${esc(p.pron || "")}</span></div><button class="mini-btn" data-show="${esc(p.jp)}" data-sub="${esc(p.ko)}">크게 보기</button></div>`).join("")}</div>`,
@@ -618,7 +626,7 @@ const lb = $("#lightbox"), sc = $("#showcard"), toast = $("#toast");
 document.addEventListener("click", e => {
   const z = e.target.closest("[data-zoom]");
   if (z) {
-    lb.innerHTML = `<img src="${esc(z.dataset.zoom)}" alt=""><p>${esc(z.dataset.cap || "")}${z.dataset.src ? ` · <a href="${esc(z.dataset.src)}" target="_blank" rel="noopener">출처 페이지 ↗</a>` : ""}</p>`;
+    lb.innerHTML = `<img src="${esc(imgSrc(z.dataset.zoom))}" alt=""><p>${esc(z.dataset.cap || "")}${z.dataset.src ? ` · <a href="${esc(z.dataset.src)}" target="_blank" rel="noopener">출처 페이지 ↗</a>` : ""}</p>`;
     lb.hidden = false; return;
   }
   const sh = e.target.closest("[data-show]");
@@ -653,6 +661,13 @@ document.addEventListener("keydown", e => {
 });
 
 route();
+
+/* 오프라인: GitHub Pages(https)에서만 서비스 워커로 전체 저장 */
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  navigator.serviceWorker.addEventListener("message", e => { if (e.data === "precached") flash("오프라인으로 볼 준비가 됐어요"); });
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+window.addEventListener("offline", () => flash("오프라인이에요 · 저장된 내용으로 보여요"));
 })();
 </script>
 </body>

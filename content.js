@@ -49,13 +49,13 @@ window.GUIDE = {
           { time: "09:30", text: "호빵맨 뮤지엄 (이날만 9:30 개장)", link: "lalaport--anpanman" },
           { time: "11:30", text: "택시로 라라포트 · 푸드코트 점심", link: "lalaport--lalaport" },
           { time: "12:45", text: "유모차 낮잠 · 아카짱혼포", link: "lalaport--lalaport" },
-          { time: "15:30", text: "택시로 숙소", link: "lalaport--days" }
+          { time: "15:30", text: "택시로 숙소 · 저녁은 숙소 2층/くうてん", link: "dinner" }
         ] },
       { date: "2026-10-12", dow: "월 · 공휴일", holiday: true, tags: [["흐림·가끔 맑음 18~29℃", "sea"], ["B안: 호빵맨·라라포트", "signal"]],
         items: [
           { time: "09:20", text: "택시로 마린월드", link: "marine--plan" },
           { time: "14:42", text: "JR로 귀가 · 낮잠", link: "marine--plan" },
-          { time: "18:00", text: "저녁 · 숙소 근처 우동", link: "udon" }
+          { time: "18:00", text: "저녁 · くうてん 또는 우동", link: "dinner" }
         ] },
       { date: "2026-10-13", dow: "화", tags: [["흐리고 한때 비 60%", "signal"]],
         items: [
@@ -75,6 +75,11 @@ window.GUIDE = {
         html: `<p>아기 동반이라 버스·페리는 뺐어요. 지하철·JR은 카드 터치 OK(카드 1장 = 1명).</p>` }
     ],
     notices: [
+      { tone: "ok", title: "인터넷 없이 보기",
+        html: `<ul>
+<li><b>휴대폰</b> · 이 사이트를 사파리(아이폰)·크롬(안드로이드)으로 열고 <b>공유 → 홈 화면에 추가</b>. 홈 화면 아이콘으로 인터넷 될 때 한 번 열어 ‘오프라인으로 볼 준비가 됐어요’가 뜨면, 그다음부턴 비행기 모드에서도 사진까지 다 보여요.</li>
+<li><b>PC·노트북</b> · <a href="https://github.com/binary-hyuk/travel_japan/releases/latest/download/fukuoka-guide-offline.zip">오프라인 zip 내려받기</a> → 압축 풀고 <code>fukuoka-guide-offline.html</code> 더블클릭. 파일 하나에 사진까지 다 들어 있어요.</li>
+<li>공식 사이트·지도 같은 바깥 링크는 인터넷이 있어야 열려요.</li></ul>` },
       { tone: "", title: "마린월드 날짜는 10/10 저녁 예보 보고 정해요",
         html: `<p>기본은 <b>A안</b>(10/11 호빵맨·라라포트, 10/12 마린월드). 10/10 저녁 기상청 예보에서 10/12에 비가 들거나 강수확률이 50%를 넘으면 <b>B안</b>(10/11 마린월드, 10/12 호빵맨·라라포트)으로 바꾸세요. 호빵맨 웹티켓은 날짜를 정한 뒤에 사면 돼요(당일 16시까지 판매). <a href="#lalaport--plan-b">A안·B안 자세히</a></p>` },
       { tone: "warn", title: "일본 3연휴와 한국 한글날 연휴가 겹쳐요",
@@ -409,10 +414,10 @@ GUIDE.sections.push({
 
 /* ═════════════ 먹을거리 · 아기 영양간식 ═════════════ */
 GUIDE.sections.push({
-  id: "snacks", cat: "food", code: "F01",
+  id: "snacks", cat: "food", code: "F01", order: 1,
   ko: "아기 영양간식", short: "아기 간식", jp: "子どものおやつ・栄養ドリンク", ro: "Healthy Snacks for Toddlers",
   lead: "배도라지즙과 똑같은 일본 제품은 없어요. 일본 엄마들은 목·기침엔 <b>꿀무(はちみつ大根)</b>나 <b>칡물(葛湯)</b> 같은 집에서 만드는 민간요법을 쓰고, 평소 영양 간식으로는 짜 먹는 젤리 음료, 미로, 비스코 같은 제품을 줍니다. 아래 제품은 모두 제조사가 안내하는 연령으로 23개월이 먹을 수 있어요.",
-  summary: "배도라지즙 대신 먹일 만한 일본 간식·음료 14가지와 사진, 살 때 쓰는 일본어",
+  summary: "배도라지즙 대신 먹일 간식·음료, 우유·성장기 밀크, 살 때 쓰는 일본어",
   keywords: ["배도라지", "배도라지즙", "간식", "おやつ", "영양", "음료", "드럭스토어", "마쓰키요", "목", "기침", "감기", "유산균", "철분", "칼슘"],
   checked: "2026-10-05",
   blocks: [
@@ -471,6 +476,31 @@ GUIDE.sections.push({
           caution: "철분·엽산 강화 「ジョア 1日分の鉄＆葉酸」은 7세 이하 엽산 상한 주의 문구가 있어 피하세요. Yakult1000도 어린이용이 아닙니다. 유성분 포함.",
           link: "https://www.yakult.co.jp/products/item0228.html" }
       ] },
+
+    { type: "items", anchor: "milk", title: "우유 · 성장기 밀크",
+      items: [
+        { name: "메이지 오이시이 규뉴 200ml", jp: "明治おいしい牛乳 200ml", img: "img/milk-meiji-200.jpg", credit: "明治 공식", srcUrl: "https://www.meiji.co.jp/products/milk_drink/49721119.html",
+          tags: [["편의점·슈퍼", ""], ["냉장 10℃ 이하", "signal"]],
+          html: `<p>일반 우유. 팩 뒷면 「種類別名称」이 <b>牛乳</b>면 생유 100% 우유예요(「加工乳」「乳飲料」는 다른 성분을 섞은 것). 200ml에 칼슘 227mg. 객실 냉장고에 보관하고, 데울 땐 4층 공용 전자레인지.</p>`,
+          caution: "200ml 팩에 빨대가 붙어 있는지, 편의점 가격은 확인하지 못했어요.",
+          link: "https://www.meiji.co.jp/products/milk_drink/49721119.html" },
+        { name: "메이지 스텝 라쿠라쿠 밀크 (액상) 240ml", jp: "明治ステップ らくらくミルク", img: "img/milk-step-liquid.jpg", credit: "明治 공식", srcUrl: "https://www.meiji.co.jp/products/milkpowder/4902705130692.html",
+          tags: [["1~3세", "ok"], ["상온 보관", "sea"], ["외출용 최고", "ok"]],
+          html: `<p>1~3세용 <b>액상</b> 성장기 밀크. 타지 않고 바로 먹이고, 고온·동결만 피하면 <b>상온 보관</b>이라 마린월드·라라포트 나들이 가방에 넣기 좋아요. 240ml 1캔에 칼슘 270mg, 철 3.36mg.</p><p class="muted">공식 구입처 링크에 아카짱혼포가 있어요. 편의점 판매·현재 가격은 미확인(2021년 희망소매가 218엔).</p>`,
+          caution: "유성분. 120ml·200ml는 2026년 1월 단종이라 240ml만 있어요.",
+          link: "https://www.meiji.co.jp/products/milkpowder/4902705130692.html" },
+        { name: "메이지 스텝 라쿠라쿠 큐브", jp: "明治ステップ らくらくキューブ", img: "img/milk-step-cube.jpg", credit: "明治 공식", srcUrl: "https://www.meiji.co.jp/products/milkpowder/4902705129634.html",
+          tags: [["1~3세", "ok"], ["계량 필요 없음", ""]],
+          html: `<p>큐브형 성장기 분유. 28g×4봉(소상자)·28g×20봉. 1봉(28g)을 녹이면 약 200ml. 객실 전기포트로 물을 끓여 식혀서 타면 돼요.</p>`,
+          caution: "큐브를 그대로 먹이지 말고, 냉장고에 넣지 마세요(판매점 안내). 가격 미확인.",
+          link: "https://www.meiji.co.jp/products/milkpowder/4902705129634.html" },
+        { name: "아이크레오 그로우업 밀크 (스틱)", jp: "アイクレオ グローアップミルク", img: "img/milk-icreo-growup.jpg", credit: "江崎グリコ 공식", srcUrl: "https://cp.glico.com/icreo/products/growupmilk/",
+          tags: [["1~3세 (9개월쯤~)", "ok"], ["스틱 13.6g×10", ""]],
+          html: `<p>글리코의 성장기 분유. 820g 캔과 <b>여행에 좋은 스틱 13.6g×10개</b>. 캔은 츠루하 온라인 2,880엔, 스틱 가격 미확인. 비슷한 스틱 제품으로 森永 「チルミル」(1~3세쯤, 14g×10), 和光堂 「ぐんぐん」(9개월~3세쯤, 14g×10)도 있어요(판매점 정보).</p>`,
+          caution: "유성분·대두.",
+          link: "https://cp.glico.com/icreo/products/growupmilk/" }
+      ],
+      note: "상온 보관되는 일반 우유(森永牛乳 200ml 롱라이프)도 있다는 기사가 있지만 공식 확인과 하카타 편의점 판매 여부는 미확인이에요. 나들이엔 액상 ‘라쿠라쿠 밀크’가 가장 확실해요." },
 
     { type: "items", title: "영양 과자",
       items: [
@@ -545,7 +575,11 @@ GUIDE.sections.push({
         { ko: "꿀이 들어 있나요?", jp: "はちみつは入っていますか？", pron: "하치미츠와 하잇테 이마스카?" },
         { ko: "카페인이 들어 있나요?", jp: "カフェインは入っていますか？", pron: "카훼인와 하잇테 이마스카?" },
         { ko: "달걀 알레르기가 있어요. 달걀 없는 게 있나요?", jp: "卵アレルギーがあります。卵なしのものはありますか？", pron: "타마고 아레루기-가 아리마스. 타마고 나시노 모노와 아리마스카?" },
-        { ko: "아이용 경구수분보충액 있나요?", jp: "子ども用の経口補水液はありますか？", pron: "코도모요-노 케-코-호스이에키와 아리마스카?" }
+        { ko: "아이용 경구수분보충액 있나요?", jp: "子ども用の経口補水液はありますか？", pron: "코도모요-노 케-코-호스이에키와 아리마스카?" },
+        { ko: "1살부터 먹는 밀크는 어디 있나요?", jp: "1歳から飲めるミルクはどこですか？", pron: "잇사이카라 노메루 미루쿠와 도코데스카?" },
+        { ko: "빨대 달린 작은 우유 있나요?", jp: "ストロー付きの小さい牛乳はありますか？", pron: "스토로-츠키노 치-사이 규-뉴-와 아리마스카?" },
+        { ko: "상온 보관되는 우유 있나요?", jp: "常温で保存できる牛乳はありますか？", pron: "조-온데 호존데키루 규-뉴-와 아리마스카?" },
+        { ko: "이 과자는 몇 살부터예요?", jp: "このお菓子は何歳からですか？", pron: "코노 오카시와 난사이카라 데스카?" }
       ] }
   ],
   sources: [
@@ -573,7 +607,13 @@ GUIDE.sections.push({
     { label: "幸田商店 · 干し芋는 몇 살부터", url: "https://www.koutashop.com/column/hoshiimo/column_58/" },
     { label: "아사히그룹식품 · アクアライトORS", url: "https://www.asahi-gf.co.jp/products/baby/drink/wakodo/aqua/4987244141750.html" },
     { label: "tomonite · 이유식 생강", url: "https://tomonite.com/articles/3272" },
-    { label: "아카짱혼포 라라포트 후쿠오카점", url: "https://stores.akachan.jp/282" }
+    { label: "아카짱혼포 라라포트 후쿠오카점", url: "https://stores.akachan.jp/282" },
+    { label: "明治 · おいしい牛乳 200ml", url: "https://www.meiji.co.jp/products/milk_drink/49721119.html" },
+    { label: "明治 · ステップ らくらくミルク", url: "https://www.meiji.co.jp/products/milkpowder/4902705130692.html" },
+    { label: "明治 · ステップ らくらくキューブ", url: "https://www.meiji.co.jp/products/milkpowder/4902705129634.html" },
+    { label: "明治 · ステップ 브랜드", url: "https://www.meiji.co.jp/baby/step/" },
+    { label: "江崎グリコ · アイクレオ グローアップミルク", url: "https://cp.glico.com/icreo/products/growupmilk/" },
+    { label: "츠루하 · 아이크레오 820g 가격", url: "https://shop.tsuruha.co.jp/10173401.html" }
   ]
 });
 
@@ -724,6 +764,7 @@ GUIDE.sections.push({
         "카카오T 또는 GO 설치·카드 등록 (마린월드에서 돌아올 때)",
         "어른 2명 각자 해외 터치결제 카드 준비 (지하철은 카드 1장 = 1명)",
         "eSIM 또는 포켓 와이파이 예약 (국제선 1층 수령)",
+        "휴대폰에 가이드 저장: 사이트 열고 ‘홈 화면에 추가’ → 한 번 열어 ‘오프라인으로 볼 준비가 됐어요’ 확인",
         "항공사 유모차 규정 확인 (탑승구까지 끌고 가서 맡길 수 있는지)",
         "엔화 현금 조금 환전 (마키노 우동·카로노우롱·페리 등은 현금만)",
         "일정: 10/10 캐널시티·이치후지 · A안 10/11 호빵맨→라라포트, 10/12 마린월드 (10/12 비 예보면 B안으로 맞바꾸기)"
@@ -922,7 +963,7 @@ GUIDE.sections.push({
 
 /* ═════════════ 먹을거리 · 숙소 근처 우동집 ═════════════ */
 GUIDE.sections.push({
-  id: "udon", cat: "food", code: "F02",
+  id: "udon", cat: "food", code: "F03", order: 3,
   ko: "숙소 근처 우동집", short: "우동집", jp: "博多うどん・子連れ", ro: "Hakata Udon near the Hotel",
   lead: "하카타 우동은 면이 부드럽고 국물이 순해서 아기와 나눠 먹기 좋아요. 숙소에서 걸어서 5~12분 안의 우동집을 아기 기준으로 골랐습니다. <b>키즈메뉴와 아기의자가 공식 확인된 곳은 와핫치</b>, 마지막 날 아침엔 <b>7시에 여는 다이후쿠</b>가 있어요.",
   summary: "아기의자·키즈메뉴, 연휴 영업, 마지막 날 아침 우동, 아기 주문 팁",
@@ -1321,7 +1362,7 @@ GUIDE.sections.push({
 
 /* ═════════════ 먹을거리 · 엄마 아빠 카페 · 디저트 ═════════════ */
 GUIDE.sections.push({
-  id: "cafe", cat: "food", code: "F03",
+  id: "cafe", cat: "food", code: "F04", order: 4,
   ko: "엄마 아빠 카페 · 디저트", short: "카페·디저트", jp: "カフェ・スイーツ", ro: "Cafés & Sweets for Parents",
   lead: "엄마·아빠 취향의 스페셜티 커피와 디저트를 골랐어요. 숙소 걸어서 10분 안, 택시·지하철로 짧게, <b>아기 낮잠 동안 숙소에서 먹을 테이크아웃</b> 세 묶음입니다. 출국일 아침엔 숙소 바로 앞 <b>FUK COFFEE(8시 오픈)</b>가 딱 맞아요.",
   summary: "숙소 근처 카페 6곳, 택시권 5곳, 포장해서 숙소에서 먹을 디저트 4곳",
@@ -1761,6 +1802,98 @@ GUIDE.sections.push({
     { label: "아카짱혼포 라라포트 후쿠오카점", url: "https://stores.akachan.jp/282" },
     { label: "아카짱혼포 · 면세 안내", url: "https://www.akachan.jp/topics/tax_free_guide/Japanese/" },
     { label: "아카짱혼포 · 아기의 날 페어", url: "https://www.akachan.jp/akachannohi/" }
+  ]
+});
+
+/* ═════════════ 먹을거리 · 하카타역 저녁 (아기랑) ═════════════ */
+GUIDE.sections.push({
+  id: "dinner", cat: "food", code: "F02", order: 2,
+  ko: "하카타역 저녁 · 아기랑", short: "저녁 맛집", jp: "博多駅 子連れディナー", ro: "Toddler-friendly Dinner near Hakata",
+  lead: "숙소에서 걸어서 10분 안의 저녁 식당이에요. 하카타역 아뮤플라자 9·10층 <b>くうてん</b>은 키즈메뉴·아기의자 있는 곳이 몰려 있고, 지친 날엔 <b>숙소 2층 레스토랑</b>이 이동 없이 갈 수 있어 편해요. 하카타 명물 <b>미즈타키(닭 전골)</b>는 국물이 순해서 아기와 나눠 먹기 좋아요.",
+  summary: "くうてん 키즈메뉴 식당, 숙소 2층 그릴, 미즈타키(닭 전골), 아이 라멘",
+  keywords: ["저녁", "夕食", "디너", "맛집", "식당", "레스토랑", "くうてん", "쿠텐", "미즈타키", "水炊き", "水たき", "딘타이펑", "鼎泰豊", "샤오롱바오", "햄버그", "ハンバーグ", "라멘", "ラーメン", "하나미도리", "華味鳥", "하마다야", "濵田屋", "Nine Doors"],
+  checked: "2026-10-10",
+  blocks: [
+    { type: "say", items: [
+      { ko: "아이 의자 있나요?", jp: "子ども用の椅子はありますか？", pron: "코도모요-노 이스와 아리마스카?" },
+      { ko: "17시 반에 어른 2명, 아이 1명 예약할 수 있나요?", jp: "17時半に大人2名と子ども1名で予約できますか？", pron: "쥬-시치지한니 오토나 니메-토 코도모 이치메-데 요야쿠 데키마스카?" }
+    ] },
+
+    { type: "callout", tone: "warn", title: "먼저 알아둘 것",
+      html: `<ul>
+<li>3연휴라 <b>예약하거나 17:30 전에 도착</b>하세요. 대기 시간은 확인된 곳이 없어요.</li>
+<li>くうてん의 <b>うまや(10층)는 리뉴얼 휴업, 10/29 재개</b>(캐널시티 うまや는 별도 매장).</li>
+<li>미즈타키 명가 <b>水たき 長野</b>는 일·월(공휴일) 휴무에 전화 예약 필수, <b>とり田</b>도 예약 필수 인기점이라 이번엔 어려워요.</li>
+<li>예약 사이트(TORETA·히토사라·resebook)가 해외 전화번호를 받는지는 미확인이에요. 안 되면 전화로.</li></ul>` },
+
+    { type: "table", title: "한눈에 보기 (아기 친화도 순)",
+      head: ["가게", "위치 · 숙소에서", "저녁 영업", "아기", "예약", "어른 1인"],
+      rows: [
+        ["<b>鼎泰豊</b> 딘타이펑", "AMU 9층 くうてん · 10~12분", "매일 ~22:00", "키즈 면·볶음밥 세트 각 1,100엔, 아기의자", "온라인은 코스만, 단품은 현장 대기", "2,500엔~"],
+        ["<b>ぶどうの樹</b> 부도노키 (스테이크)", "AMU 10층 · 10~12분", "17:00~21:30", "키즈 뷔페 500엔·<b>3세 이하 무료</b>(저녁 적용 미확인), 아기의자", "히토사라 온라인·전화", "3,000엔~"],
+        ["<b>Nine Doors</b> 나인도어즈 (그릴)", "<b>숙소 2층 · 0분</b>", "17:00~23:00", "유모차 입장, 소파석·개인실. 키즈메뉴·아기의자 미확인", "전화·一休", "5,000~6,000엔"],
+        ["<b>グリル大宮</b> 그릴 오미야 (양식)", "AMU 9층 · 10~12분", "17:00~22:00(금·토·공휴일 전날 23:00)", "키즈 햄버그 세트 1,210엔, 아기의자", "미확인", "2,000엔~"],
+        ["<b>博多水たき 濵田屋 くうてん</b> 하마다야", "AMU 10층 · 10~12분", "~22:00", "아이 동반 OK, <b>전기 조리(불꽃 없음)</b>, 아기의자 미확인", "전화·resebook", "세트 3,800엔~"],
+        ["<b>博多華味鳥 KITTE博多</b> 하나미도리", "KITTE 9층 · 8~10분", "15:00~23:00", "유모차 입장 쉬움, 반개인실. 아기의자 미확인", "TORETA·전화", "코스 4,500엔~"],
+        ["<b>釜のうさぎ</b> 가마노우사기 (솥밥)", "AMU 10층 · 10~12분", "~22:00", "어린이 런치 890엔(저녁 주문 미확인), 아기의자 3대", "미확인", "약 2,500엔"],
+        ["<b>長浜ナンバーワン</b> 나가하마 넘버원 (라멘)", "데이토스 2층 · 10~12분", "미확인", "어린이 라멘(하프) 700엔, 아기의자", "미확인", "미확인"],
+        ["<b>博多華味鳥 博多駅前店</b>", "博多駅前3-23-17 · 5~10분(추정)", "토 17~23시, 일·공휴일 17~22시", "아이 동반 OK, 테이블 개인실", "TORETA·전화", "코스 4,500엔~"]
+      ],
+      note: "‘아기의자·키즈메뉴’는 JR하카타시티 공식 키즈메뉴 목록과 각 공식·예약 사이트 기준이에요. くうてん 영업은 11:00~22:00이 기본." },
+
+    { type: "facts", title: "가게별 메모",
+      rows: [
+        ["딘타이펑 <span class=\"tag ok\">1순위</span>", "샤오롱바오·볶음밥이 순해서 아기에게 무난. 코스(ゆたか 3,500엔)만 온라인 예약이라 단품이면 <b>17:30 전 도착</b> 권장. ☎ <span class=\"num\">092-477-2778</span>"],
+        ["부도노키", "공식 키즈메뉴 목록에 ‘어린이 스테이크+뷔페 1,000엔, 어린이 뷔페 500엔, 3세 이하 무료’. 저녁에도 되는지 예약 때 확인. 카드·PayPay·교통카드. ☎ <span class=\"num\">092-409-6900</span>"],
+        ["Nine Doors (숙소 2층)", "장작불 그릴 고기와 규슈 식재료. 2026-05 기사에 ‘아기 동반 환영, 유모차 입장, 소파석·완전 개인실’. <b>마린월드·라라포트 다녀와 지친 날</b> 엘리베이터만 타면 돼요. ☎ <span class=\"num\">092-260-9185</span>"],
+        ["그릴 오미야", "햄버그는 아기 저녁으로 가장 안전한 축. 72석. ☎ <span class=\"num\">092-710-6116</span>"],
+        ["하마다야 くうてん (미즈타키)", "테이블에 전기 조리기가 내장돼 불꽃이 없어 아기 옆에서도 안심. 저녁 세트 3,800엔, 마무리 죽(おじや) 330엔·밥 280엔 추가 가능. ‘냄비는 인원수만큼’이 원칙이라 아기도 인원에 들어가는지 예약 때 물어보세요. ☎ <span class=\"num\">092-292-3412</span>"],
+        ["하나미도리 (미즈타키)", "KITTE점: 코스 4,500엔~, 미즈타키를 안 시키면 자릿세 600엔, 예약 15분 지나면 자동 취소. 역앞점: 106석, 테이블 개인실(4~12명), 근처 별관(博多駅前3-3-12)엔 개인실. ☎ KITTE <span class=\"num\">092-292-3346</span> · 역앞 <span class=\"num\">092-432-1801</span>"],
+        ["가마노우사기", "쇠솥 밥과 다시 오차즈케. 순한 밥·국물이라 아기에게 좋아요. 어린이 메뉴를 저녁에도 주는지 전화로 확인. ☎ <span class=\"num\">092-260-8677</span>"],
+        ["나가하마 넘버원 (라멘)", "아이와 하카타 라멘을 먹을 수 있는 몇 안 되는 확인된 곳. 돈코츠 국물이 짜니 면 위주로."],
+        ["그 밖에 くうてん 키즈메뉴", "人形町今半 어린이 스키야키 정식 2,090엔(아기의자 수량 한정) · 焼肉チャンピオン 키즈 비빔밥 630엔 · めんたい料理 椒房庵 어린이 플레이트 1,300엔 · 四川飯店 어린이 플레이트 1,200엔 · スープストックトーキョー(AMU 지하1층) 키즈 세트 750엔 · 陶板焼き 俵屋(데이토스 지하1층) 키즈 햄버그 630엔. 저녁 영업시간은 미확인."]
+      ] },
+
+    { type: "text", title: "미즈타키 · 아기와 먹는 법",
+      html: `<p>하카타식 닭 전골. 뽀얀 닭 육수에 닭고기·채소를 넣어 끓이고, 처음엔 <b>국물만 한 잔</b> 마시는 게 순서예요. 간이 거의 없는 국물이라 23개월도 식혀서 먹이기 좋고, 마지막 <b>죽(おじや)</b>은 아기 저녁으로 딱이에요. 폰즈(초간장)는 어른용.</p>` },
+
+    { type: "timeline", title: "날짜별로 고르면",
+      items: [
+        { time: "10/10", title: "토 · 모츠나베 이치후지 17:00 (예약)", html: "<p><a href=\"#saved\">저장한 곳</a> 참고</p>" },
+        { time: "10/11", title: "일 · A안(호빵맨·라라포트) 다녀와서 → 숙소 2층 Nine Doors 또는 くうてん 딘타이펑" },
+        { time: "10/12", title: "월 · 마린월드 다녀와서 → くうてん 그릴 오미야·하마다야 미즈타키, 또는 우동", html: "<p><a href=\"#udon\">숙소 근처 우동집</a></p>" }
+      ] },
+
+    { type: "gallery",
+      images: [
+        { src: "img/dinner-hakata-ramen.jpg", caption: "하카타 라멘 (돈코츠). 아기는 면 위주로", credit: "vigorous_action · CC BY-SA 3.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Hakata_ramen.JPG" }
+      ] },
+
+    { type: "phrases", title: "저녁 식당에서",
+      items: [
+        { ko: "아이 의자 있나요?", jp: "子ども用の椅子はありますか？", pron: "코도모요-노 이스와 아리마스카?" },
+        { ko: "아이는 인원에 포함돼요? (전골 주문)", jp: "子どもも人数に入りますか？", pron: "코도모모 닌즈-니 하이리마스카?" },
+        { ko: "마지막에 죽(오지야) 해 주세요.", jp: "最後におじやをお願いします。", pron: "사이고니 오지야오 오네가이시마스." },
+        { ko: "어린이 메뉴는 저녁에도 되나요?", jp: "お子様メニューは夜も頼めますか？", pron: "오코사마 메뉴-와 요루모 타노메마스카?" }
+      ] }
+  ],
+  sources: [
+    { label: "JR博多シティ · 키즈메뉴 목록", url: "https://www.jrhakatacity.com/kidsmenu/" },
+    { label: "JR博多シティ · 鼎泰豊", url: "https://www.jrhakatacity.com/floor/detail/?cd=000217" },
+    { label: "鼎泰豊 · 하카타 코스 예약", url: "https://d.rt-c.co.jp/hakata" },
+    { label: "JR博多シティ · ぶどうの樹", url: "https://www.jrhakatacity.com/floor/detail/?cd=000233" },
+    { label: "히토사라 · ぶどうの樹", url: "https://hitosara.com/0004028033/" },
+    { label: "macaroni · 하카타 아이 동반 식당 (2026-05)", url: "https://macaro-ni.jp/176078?page=2" },
+    { label: "一休 · Nine Doors Restaurant & Grill", url: "https://restaurant.ikyu.com/113521/" },
+    { label: "Hot Pepper · Nine Doors", url: "https://www.hotpepper.jp/strJ001225067/" },
+    { label: "JR博多シティ · グリル大宮", url: "https://www.jrhakatacity.com/floor/detail/?cd=000207" },
+    { label: "JR博多シティ · 博多水たき 濵田屋", url: "https://www.jrhakatacity.com/floor/detail/?cd=000235" },
+    { label: "濵田屋 くうてん · 공식", url: "https://mizutaki-hamadaya.jp/kooten/" },
+    { label: "華味鳥 · KITTE博多店", url: "https://www.hanamidori.net/stores/0922923346/" },
+    { label: "華味鳥 · 博多駅前店", url: "https://www.hanamidori.net/stores/0924321801/" },
+    { label: "TORETA · 華味鳥 KITTE博多 예약", url: "https://yoyaku.toreta.in/kittehakata" },
+    { label: "TORETA · 華味鳥 博多駅前 예약", url: "https://yoyaku.toreta.in/hakataekimaeten/" },
+    { label: "JR博多シティ · 釜のうさぎ", url: "https://www.jrhakatacity.com/floor/detail/?cd=000487" }
   ]
 });
 
