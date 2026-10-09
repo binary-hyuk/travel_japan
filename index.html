@@ -232,6 +232,7 @@ td.num,th.num{text-align:right}
 
 /* 체크리스트 */
 .checks{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.checktools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;padding:10px 12px;background:var(--surface);border:1px dashed var(--line);border-radius:var(--r)}
 .checks label{display:flex;gap:10px;align-items:flex-start;padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;cursor:pointer}
 .checks input{margin-top:6px;accent-color:var(--sea)}
 .checks input:checked + span{color:var(--muted);text-decoration:line-through}
@@ -408,16 +409,19 @@ const R = {
   phrases: b => `${h3(b)}<div class="phrases">${b.items.map(p => `<div class="phrase"><div class="p-ko">${esc(p.ko)}</div><div class="p-jp">${esc(p.jp)}</div><div class="p-pr">${esc(p.pron || "")}</div><div class="p-act"><button class="mini-btn" data-show="${esc(p.jp)}" data-sub="${esc(p.ko)}">크게 보기</button><button class="mini-btn" data-copy="${esc(p.jp)}">복사</button></div></div>`).join("")}</div>${noteHtml(b)}`,
   say: b => `<div class="say"><div class="say-h">꼭 쓰는 한마디</div>${b.items.map(p => `<div class="say-row"><div class="say-txt"><span class="say-k">${esc(p.ko)}</span><span class="say-j">${esc(p.jp)}</span><span class="say-p">${esc(p.pron || "")}</span></div><button class="mini-btn" data-show="${esc(p.jp)}" data-sub="${esc(p.ko)}">크게 보기</button></div>`).join("")}</div>`,
   links: b => `${h3(b)}<ul class="links">${b.items.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>${l.note ? `<small>${esc(l.note)}</small>` : ""}</li>`).join("")}</ul>`,
-  checklist: (b, sid, i) => { const done = b.items.filter((t, j) => store.get(`chk:${sid}:${i}:${j}`)).length; return `${b.title ? `<h3>${esc(b.title)}<span class="tag chk-count ${done === b.items.length ? "ok" : ""}" data-group="${esc(sid)}:${i}">${done}/${b.items.length}</span></h3>` : ""}<ul class="checks" data-group="${esc(sid)}:${i}">${b.items.map((t, j) => { const k = `chk:${sid}:${i}:${j}`; return `<li><label><input type="checkbox" id="${esc(k)}" data-store="${esc(k)}" ${store.get(k) ? "checked" : ""}><span>${t}</span></label></li>`; }).join("")}</ul>`; }
+  checklist: (b, sid, i) => { const keyOf = t => `chk:${sid}:${hash(textOf(t))}`; const done = b.items.filter(t => store.get(keyOf(t))).length; return `${b.title ? `<h3>${esc(b.title)}<span class="tag chk-count ${done === b.items.length ? "ok" : ""}" data-group="${esc(sid)}:${i}">${done}/${b.items.length}</span></h3>` : ""}<ul class="checks" data-group="${esc(sid)}:${i}">${b.items.map(t => { const k = keyOf(t); return `<li><label><input type="checkbox" id="${esc(k)}" data-store="${esc(k)}" ${store.get(k) ? "checked" : ""}><span>${t}</span></label></li>`; }).join("")}</ul>`; },
+  checktools: () => `<div class="checktools"><button type="button" class="mini-btn" data-chk="share">체크 공유 링크 복사</button><button type="button" class="mini-btn" data-chk="clear">체크 모두 해제</button><span class="muted">체크는 이 폰 브라우저에 저장돼요. 다른 폰과 맞추려면 링크를 보내서 열게 하세요(상대 체크와 합쳐져요).</span></div>`,
 };
 function h3(b) { return b.title ? `<h3>${esc(b.title)}${tagsHtml(b.tags)}</h3>` : ""; }
 function noteHtml(b) { return b.note ? `<p class="note">${b.note}</p>` : ""; }
 function tagHtml(t) { const [label, tone] = Array.isArray(t) ? t : [t, ""]; return `<span class="tag ${esc(tone)}">${esc(label)}</span>`; }
 function tagsHtml(ts) { return ts && ts.length ? ts.map(tagHtml).join("") : ""; }
 
+const hash = str => { let x = 5381; for (const ch of str) x = ((x * 33) ^ ch.codePointAt(0)) >>> 0; return x.toString(36); };
 const store = {
   get(k) { try { return localStorage.getItem("fkg:" + k); } catch { return null; } },
-  set(k, v) { try { v == null ? localStorage.removeItem("fkg:" + k) : localStorage.setItem("fkg:" + k, v); } catch {} }
+  set(k, v) { try { v == null ? localStorage.removeItem("fkg:" + k) : localStorage.setItem("fkg:" + k, v); } catch {} },
+  keys(prefix) { try { return Object.keys(localStorage).filter(k => k.startsWith("fkg:" + prefix)).map(k => k.slice(4)); } catch { return []; } }
 };
 
 /* ───── 화면 ───── */
@@ -649,6 +653,27 @@ document.addEventListener("change", e => {
   const badge = document.querySelector(`.chk-count[data-group="${ul.dataset.group}"]`);
   if (badge) { badge.textContent = `${done}/${boxes.length}`; badge.classList.toggle("ok", done === boxes.length); }
 });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-chk]"); if (!b) return;
+  const keys = store.keys("chk:").filter(k => store.get(k));
+  if (b.dataset.chk === "share") {
+    if (!keys.length) { flash("체크한 항목이 아직 없어요"); return; }
+    const url = `${location.origin}${location.pathname}?c=${keys.map(k => k.slice(4)).join(".")}#packing`;
+    const done = () => flash(`공유 링크를 복사했어요 (${keys.length}개)`);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => fallbackCopy(url) && done());
+    else if (fallbackCopy(url)) done();
+  } else if (b.dataset.chk === "clear") {
+    if (b.dataset.armed !== "1") { b.dataset.armed = "1"; b.textContent = "한 번 더 누르면 모두 해제"; setTimeout(() => { b.dataset.armed = ""; b.textContent = "체크 모두 해제"; }, 3000); return; }
+    keys.forEach(k => store.set(k, null)); flash("체크를 모두 해제했어요"); route();
+  }
+});
+(function importChecks() {
+  const m = location.search.match(/[?&]c=([^&]+)/); if (!m) return;
+  const list = decodeURIComponent(m[1]).split(".").filter(x => /^[a-z]+:[0-9a-z]+$/.test(x));
+  list.forEach(x => store.set("chk:" + x, "1"));
+  try { history.replaceState(null, "", location.pathname + location.hash); } catch {}
+  if (list.length) setTimeout(() => flash(`공유받은 체크 ${list.length}개를 합쳤어요`), 300);
+})();
 function fallbackCopy(text) {
   const ta = document.createElement("textarea"); ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.append(ta); ta.select();
   let ok = false; try { ok = document.execCommand("copy"); } catch {} ta.remove(); return ok;
