@@ -119,6 +119,9 @@ def build_single():
     with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(out, "fukuoka-guide-offline.html")
         z.writestr("README-offline.txt", "﻿" + readme.replace("\n", "\r\n"))
+        csv_path = os.path.join(ROOT, "atm-fukuoka.csv")
+        if os.path.exists(csv_path):
+            z.write(csv_path, "atm-fukuoka.csv")
     print("zip", round(os.path.getsize(zp) / 1e6, 1), "MB")
 
 

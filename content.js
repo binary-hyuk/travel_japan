@@ -92,7 +92,7 @@ window.GUIDE = {
 
 /* ═════════════ 이동 · 공항 → 숙소 ═════════════ */
 GUIDE.sections.push({
-  id: "airport", cat: "move", code: "T01",
+  id: "airport", cat: "move", code: "T01", order: 1,
   ko: "공항 → 숙소", short: "공항·숙소", jp: "福岡空港 → ホテル", ro: "Fukuoka Airport → Hotel",
   lead: "국제선 도착(11:10) 후 숙소까지 택시 15~20분, 지하철 35~45분입니다. 23개월 아기에 짐·유모차까지 있으니 <b>택시</b>를 권하고, 지하철은 대안으로 정리했어요. 체크인은 15:00이고, 그 전에 프런트에 짐을 맡길 수 있습니다.",
   summary: "숙소 정보, 택시·지하철·버스 비교, 도착 로비에서 할 일, 귀국일 출발 시각",
@@ -162,7 +162,7 @@ GUIDE.sections.push({
 
     { type: "facts", title: "국제선 1층 도착 로비에서 할 일",
       rows: [
-        ["ATM", "세븐은행 ATM · 보안검색 전 1층 · <span class=\"num\">05:00–21:40</span>"],
+        ["ATM", "세븐은행 ATM 2대 · 보안검색 전 1층 · <span class=\"num\">5:00–21:30</span>(세븐은행 공식 검색, 공항 안내엔 21:40). <a href=\"#atm\">ATM 전체</a>"],
         ["환전", "후쿠오카은행 환전소, 트래블렉스 등 1층"],
         ["와이파이 · SIM", "글로벌WiFi·イモトのWiFi 등 카운터와 수령 사물함, SIM 자판기 (업체별 운영시간 미확인)"],
         ["수유실", "1층 2곳 · 수유 부스, 온수기, 기저귀 교환대"],
@@ -840,7 +840,7 @@ GUIDE.sections.push({
         "eSIM 또는 포켓 와이파이 예약 (국제선 1층 수령)",
         "휴대폰에 가이드 저장: 사이트 열고 ‘홈 화면에 추가’ → 한 번 열어 ‘오프라인으로 볼 준비가 됐어요’ 확인",
         "항공사 유모차 규정 확인 (탑승구까지 끌고 가서 맡길 수 있는지)",
-        "엔화 현금 조금 환전 (마키노 우동·카로노우롱·페리 등은 현금만)",
+        "엔화 현금 준비: 숙소 근처 세븐일레븐 ATM(24시간)에서 Visa·Mastercard로 인출, 통화는 ‘엔’ 선택 · 마린월드 가기 전에 미리",
         "일정: 10/10 캐널시티·이치후지 · A안 10/11 호빵맨→라라포트, 10/12 마린월드 (10/12 비 예보면 B안으로 맞바꾸기)"
       ] },
 
@@ -1971,6 +1971,80 @@ GUIDE.sections.push({
   ]
 });
 
+/* ═════════════ 이동 · ATM · 현금 인출 ═════════════ */
+GUIDE.sections.push({
+  id: "atm", cat: "move", code: "T03", order: 3,
+  ko: "ATM · 엔화 뽑기", short: "ATM", jp: "ATM・現金引き出し", ro: "Cash with Visa / Mastercard",
+  lead: "숙소 반경 400m 안에 <b>해외 Visa·Mastercard로 엔화를 뽑을 수 있는 24시간 ATM</b>(세븐일레븐 세븐은행, 미니스톱·맥스밸류 이온은행)이 여러 곳 있어요. 주말·공휴일엔 우체국 ATM이 짧게 열거나 쉬고, <b>마린월드 주변엔 ATM이 사실상 없어서</b> 하카타에서 미리 뽑아 가세요.",
+  summary: "숙소·하카타역·캐널시티·리버레인·라라포트·공항 ATM 위치와 지도 링크, 수수료·한도",
+  keywords: ["ATM", "현금", "엔화", "인출", "출금", "Visa", "비자", "Mastercard", "마스터", "세븐은행", "セブン銀行", "세븐일레븐", "이온", "イオン銀行", "우체국", "ゆうちょ", "트래블로그", "트래블월렛", "환전"],
+  checked: "2026-10-09",
+  blocks: [
+    { type: "say", items: [
+      { ko: "해외 카드를 쓸 수 있는 ATM은 어디예요?", jp: "海外のカードが使えるATMはどこですか？", pron: "카이가이노 카-도가 츠카에루 에-티-에무와 도코데스카?" }
+    ] },
+
+    { type: "callout", tone: "warn", title: "꼭 알아둘 것",
+      html: `<ul>
+<li><b>통화는 ‘엔(JPY)’을 고르세요.</b> 세븐은행은 Visa·Mastercard에 원화/엔화 선택 화면을 띄워요. 원화를 고르면 ATM 쪽 환율로 원화 금액이 정해져요. 확인 전 화면의 수수료 금액도 꼭 보세요.</li>
+<li><b>10/11(일)·10/12(공휴일)엔 세븐은행·이온 24시간 ATM</b>을 쓰세요. 우체국 ATM은 쉬거나 단축 운영해요.</li>
+<li><b>마린월드 가는 날은 하카타에서 미리.</b> 가장 가까운 ATM이 직선 1.4km 떨어진 사이토자키역 앞 패밀리마트(우체국 ATM)예요.</li>
+<li>같은 브랜드 마크가 있어도 카드가 거절될 수 있어요(세븐·이온·로손 모두 안내). 안 되면 다른 망 ATM으로.</li>
+<li>공항 국제선 세븐은행 ATM은 세븐은행 공식 검색 기준 <b>5:00–21:30</b>이에요.</li></ul>` },
+
+    { type: "table", title: "어느 ATM이 되나",
+      head: ["ATM 망", "Visa · Mastercard", "ATM 수수료", "1회 한도", "시간", "한국어"],
+      rows: [
+        ["<b>세븐은행</b> (세븐일레븐·역·몰)", "○ · ○", "카드 브랜드별로 달라 화면에 표시(블로그 기준 110~220엔, 미확인)", "10만 엔", "24시간(설치 장소 영업시간 따라)", "○"],
+        ["<b>이온은행</b> (미니스톱·맥스밸류)", "○ · ○", "발급사 기준(공식 명시는 은련 75엔뿐)", "5만 엔", "24시간(점포 영업시간 안)", "○ · 인터폰도 한국어"],
+        ["<b>유초은행</b> (우체국)", "○ · ○", "일부 해외카드 1회 220엔", "5만 엔", "지점마다 다름, 주말·공휴일 단축", "소형 ATM은 한국어(2016 자료)"],
+        ["<b>로손은행</b> (로손)", "○ · ○", "카드별 상이", "5만 엔", "24시간(새벽 점검 15분)", "○ · 일부 점포는 해외카드 불가"],
+        ["<b>E-net</b> (패밀리마트 등)", "○ · ○", "은행별 상이", "미확인", "24시간", "미확인"]
+      ] },
+
+    { type: "table", anchor: "list", title: "거점별 ATM (숙소에서 가까운 순)",
+      head: ["거점", "ATM", "망", "시간", "숙소에서", "구글맵"],
+      rows: [["숙소 주변", "<b>세븐일레븐 관현빌딩점</b><br><span class=\"jp\">セブン-イレブン 博多駅前管絃ビル店</span>", "세븐은행", "24시간", "약 80m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D%E7%AE%A1%E7%B5%83%E3%83%93%E3%83%AB%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-30-23\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>세븐일레븐 닌진도리점</b><br><span class=\"jp\">セブン-イレブン 博多人参通り店</span>", "세븐은행", "24시간", "약 170m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E4%BA%BA%E5%8F%82%E9%80%9A%E3%82%8A%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-17-5\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>세븐일레븐 하카타구청앞점</b><br><span class=\"jp\">セブン-イレブン 博多区役所前店</span>", "세븐은행", "24시간", "약 210m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%BD%B9%E6%89%80%E5%89%8D%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D2-11-16\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>미니스톱 하카타역앞 3초메점</b><br><span class=\"jp\">ミニストップ 博多駅前3丁目店</span><br><span class=\"muted\">アクタス博多Vタワー 1F</span>", "이온은행", "24시간", "약 215m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%83%9F%E3%83%8B%E3%82%B9%E3%83%88%E3%83%83%E3%83%97%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3%E4%B8%81%E7%9B%AE%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-15-10\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>세븐일레븐 하카타역앞도리점</b><br><span class=\"jp\">セブン-イレブン 博多駅前通店</span><br><span class=\"muted\">2대</span>", "세븐은행", "24시간", "약 250m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D%E9%80%9A%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-26-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>세븐일레븐 하카타역앞 2초메점</b><br><span class=\"jp\">セブン-イレブン 博多駅前2丁目店</span>", "세븐은행", "24시간", "약 280m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D2%E4%B8%81%E7%9B%AE%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D2-17-8\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>맥스밸류 하카타기온점</b><br><span class=\"jp\">マックスバリュ 博多祇園店</span>", "이온은행", "24시간", "약 325m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E3%83%90%E3%83%AA%E3%83%A5%20%E5%8D%9A%E5%A4%9A%E7%A5%87%E5%9C%92%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E7%A5%87%E5%9C%92%E7%94%BA7-20\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>세븐일레븐 아사히빌딩점</b><br><span class=\"jp\">セブン-イレブン 博多駅前朝日ビル店</span><br><span class=\"muted\">2대</span>", "세븐은행", "24시간", "약 380m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3-%E3%82%A4%E3%83%AC%E3%83%96%E3%83%B3%20%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D%E6%9C%9D%E6%97%A5%E3%83%93%E3%83%AB%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D2-1-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["숙소 주변", "<b>하카타 우체국</b><br><span class=\"jp\">博多郵便局</span><br><span class=\"muted\">JRJP博多ビル 1F</span>", "유초은행", "평일·토 7–23 / 일·공휴일 7–21", "약 510m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E9%83%B5%E4%BE%BF%E5%B1%80%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%978-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["캐널시티", "<b>캐널시티 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM キャナルシティ博多</span><br><span class=\"muted\">지하 1층 クリスタルキャニオン ATMコーナー</span>", "세븐은행", "7:00–24:00", "약 230m", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E3%82%AD%E3%83%A3%E3%83%8A%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3%E5%8D%9A%E5%A4%9A%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E4%BD%8F%E5%90%891-2\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["하카타역", "<b>하트인 JR하카타역 치쿠시구치점</b><br><span class=\"jp\">ハートイン JR博多駅筑紫口店</span><br><span class=\"muted\">역 안 · 3대</span>", "세븐은행", "24시간", "약 0.7km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%BC%E3%83%88%E3%82%A4%E3%83%B3%20JR%E5%8D%9A%E5%A4%9A%E9%A7%85%E7%AD%91%E7%B4%AB%E5%8F%A3%E5%BA%97%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["하카타역", "<b>이온은행 ATM 치쿠시구치</b><br><span class=\"jp\">イオン銀行ATM JR博多駅筑紫口出張所</span><br><span class=\"muted\">筑紫口 로터리 앞</span>", "이온은행", "24시간", "약 0.75km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%A4%E3%82%AA%E3%83%B3%E9%8A%80%E8%A1%8CATM%20JR%E5%8D%9A%E5%A4%9A%E9%A7%85%E7%AD%91%E7%B4%AB%E5%8F%A3%E5%87%BA%E5%BC%B5%E6%89%80%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["하카타역", "<b>하카타 버스터미널 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM 博多バスターミナル</span><br><span class=\"muted\">지하 1층(6:30–23:00) · 2층(5:30–24:00)</span>", "세븐은행", "5:30–24:00", "약 0.6km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E5%8D%9A%E5%A4%9A%E3%83%90%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%972-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["하카타역", "<b>유초은행 JR하카타역 출장소</b><br><span class=\"jp\">ゆうちょ銀行 JR博多駅内出張所</span><br><span class=\"muted\">阪急百貨店口 개찰구 옆</span>", "유초은행", "평일·토 7–23 / 일·공휴일 7–21", "약 0.6km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%86%E3%81%86%E3%81%A1%E3%82%87%E9%8A%80%E8%A1%8C%20JR%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%86%85%E5%87%BA%E5%BC%B5%E6%89%80%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["하카타역", "<b>지하철 하카타역 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM 福岡市地下鉄博多駅</span><br><span class=\"muted\">筑紫口 개찰구 밖 콘코스</span>", "세븐은행", "5:15–25:00", "약 0.6km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%9C%B0%E4%B8%8B%E9%89%84%E5%8D%9A%E5%A4%9A%E9%A7%85%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E4%B8%AD%E5%A4%AE%E8%A1%971-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["리버레인(호빵맨)", "<b>하카타 리버레인 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM 博多リバレイン</span><br><span class=\"muted\">지하 2층 코인로커 옆</span>", "세븐은행", "5:15–24:15", "약 0.9km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E5%8D%9A%E5%A4%9A%E3%83%AA%E3%83%90%E3%83%AC%E3%82%A4%E3%83%B3%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E4%B8%8B%E5%B7%9D%E7%AB%AF%E7%94%BA3-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["리버레인(호빵맨)", "<b>하카타 리버레인 우체국</b><br><span class=\"jp\">博多リバレイン内郵便局</span>", "유초은행", "매일 9:00–19:00", "약 0.9km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E5%8D%9A%E5%A4%9A%E3%83%AA%E3%83%90%E3%83%AC%E3%82%A4%E3%83%B3%E5%86%85%E9%83%B5%E4%BE%BF%E5%B1%80%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E4%B8%8B%E5%B7%9D%E7%AB%AF%E7%94%BA2-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["라라포트", "<b>라라포트 후쿠오카 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM ららぽーと福岡</span><br><span class=\"muted\">1층 공용부</span>", "세븐은행", "10:00–21:00", "약 3.7km", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8%E7%A6%8F%E5%B2%A1%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E9%82%A3%E7%8F%826-23-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["마린월드 쪽", "<b>패밀리마트 사이토자키역앞점</b><br><span class=\"jp\">ファミリーマート 西戸崎駅前店 (ゆうちょATM)</span><br><span class=\"muted\">마린월드에서 직선 약 1.4km</span>", "유초은행", "0:05–23:55", "–", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E3%83%9E%E3%83%BC%E3%83%88%20%E8%A5%BF%E6%88%B8%E5%B4%8E%E9%A7%85%E5%89%8D%E5%BA%97%20%28%E3%82%86%E3%81%86%E3%81%A1%E3%82%87ATM%29%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E6%9D%B1%E5%8C%BA%E8%A5%BF%E6%88%B8%E5%B4%8E1-9-3\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"], ["공항 국제선", "<b>공항 국제선 세븐은행 ATM</b><br><span class=\"jp\">セブン銀行ATM 福岡空港国際線</span><br><span class=\"muted\">1층 ATMコーナー 2대</span>", "세븐은행", "5:00–21:30", "–", "<a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%BB%E3%83%96%E3%83%B3%E9%8A%80%E8%A1%8CATM%20%E7%A6%8F%E5%B2%A1%E7%A9%BA%E6%B8%AF%E5%9B%BD%E9%9A%9B%E7%B7%9A%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%A4%A7%E5%AD%97%E4%B8%8B%E8%87%BC%E4%BA%95767-1\" target=\"_blank\" rel=\"noopener\">지도 ↗</a>"]],
+      note: "위치·시간은 세븐은행·유초은행·이온은행 공식 ATM 검색 기준, 거리는 숙소에서 잰 직선거리예요. 아뮤플라자·KITTE·한큐 안 ATM은 공식 검색에서 찾지 못했어요." },
+
+    { type: "text", title: "구글맵에 한 번에 넣기",
+      html: `<ol>
+<li><a href="atm-fukuoka.csv" target="_blank" rel="noopener">ATM 목록 CSV 내려받기</a> (위 표 20곳, 일본어 주소 포함)</li>
+<li>PC에서 <a href="https://www.google.com/maps/d/" target="_blank" rel="noopener">Google 내 지도(My Maps)</a> → <b>새 지도 만들기</b> → 레이어의 <b>가져오기</b> → CSV 선택 → 위치 열은 <b>주소</b>, 제목 열은 <b>이름</b>.</li>
+<li>휴대폰 구글맵 앱 → <b>저장됨 → 지도</b>에서 그 지도가 보여요.</li></ol>
+<p class="muted">구글맵 ‘저장 목록’에 직접 넣는 공식 연동은 없어서, 표의 ‘지도 ↗’를 눌러 각 장소에서 저장 버튼을 누르거나 위 방법을 쓰세요.</p>` },
+
+    { type: "facts", title: "한국 트래블카드 참고 (카드사 안내 기준)",
+      rows: [
+        ["트래블로그 (하나카드)", "해외 인출 수수료(건당 US$3)·국제브랜드 수수료(1%) 면제, 다만 ‘현지 ATM 수수료가 부과될 수 있음’. DCC(원화 결제) 불가. 일본 면제 ATM으로 세븐은행·이온은행이 소개되고, 한도 일 $6,000·월 $10,000(카드고릴라 2026-08 기사, 2차 자료)."],
+        ["트래블월렛", "월 US$500까지 수수료 없음, 초과분 2%. 한도 1회 $400·일 $1,000·월 $2,000. ATM 자체 수수료는 ‘기기 정책에 따라 달라 안내가 어렵다’고만 공식 안내. ‘이온은행·미니스톱 면제’는 블로그·기사 정보."],
+        ["팁", "세븐은행 1회 한도가 10만 엔으로 가장 커요. 수수료가 건당이라면 필요한 만큼 한두 번에 나눠 뽑는 편이 유리해요. 카드별 조건은 출발 전 각 카드 앱에서 다시 확인하세요."]
+      ] },
+
+    { type: "phrases", title: "ATM에서",
+      items: [
+        { ko: "ATM은 어디예요?", jp: "ATMはどこですか？", pron: "에-티-에무와 도코데스카?" },
+        { ko: "카드가 안 나와요.", jp: "カードが出てきません。", pron: "카-도가 데테키마셍." },
+        { ko: "해외 카드를 쓸 수 있는 ATM은 어디예요?", jp: "海外のカードが使えるATMはどこですか？", pron: "카이가이노 카-도가 츠카에루 에-티-에무와 도코데스카?" }
+      ] }
+  ],
+  sources: [
+    { label: "세븐은행 · 해외 발행 카드", url: "https://www.sevenbank.co.jp/intlcard/card.html" },
+    { label: "세븐은행 · 해외 카드 이용 방법", url: "https://www.sevenbank.co.jp/intlcard/service.html" },
+    { label: "세븐은행 · ATM 검색", url: "https://location.sevenbank.co.jp/sevenbank/" },
+    { label: "유초은행 · 해외 카드 ATM", url: "https://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html" },
+    { label: "일본우편 · 우체국·ATM 지도", url: "https://map.japanpost.jp/p/search/" },
+    { label: "이온은행 · 해외 카드 ATM", url: "https://www.aeonbank.co.jp/atm/en/page02.html" },
+    { label: "이온은행 · ATM 검색", url: "https://map.aeonbank.co.jp/aeonbank/" },
+    { label: "로손은행 · 해외 카드", url: "https://www.lawsonbank.jp/international/en/" },
+    { label: "E-net · 한국어 안내", url: "https://www.enetcom.co.jp/intl/ko/" },
+    { label: "패밀리마트 · ファミマATM 설치 (2026-06)", url: "https://www.family.co.jp/company/news_releases/2026/20260601_01.html" },
+    { label: "하나카드 · 트래블로그 체크카드", url: "https://www.hanacard.co.kr/OPI41000000D.web?CD_PD_SEQ=15414" },
+    { label: "트래블월렛 · ATM FAQ", url: "https://docs.channel.io/travelwallet/ko/categories/ATM-e890724f" },
+    { label: "카드고릴라 · 일본 ATM (2026-08, 2차 자료)", url: "https://www.card-gorilla.com/contents/detail/2867" }
+  ]
+});
+
 /* ═════════════ 여행 일본어 · 일정 순서 회화 ═════════════ */
 window.GUIDE.phrasebook = [
  {
@@ -2205,7 +2279,7 @@ window.GUIDE.phrasebook = [
 
 /* ═════════════ 이동 · 교통카드 Suica ═════════════ */
 GUIDE.sections.push({
-  id: "suica", cat: "move", code: "T02",
+  id: "suica", cat: "move", code: "T02", order: 2,
   ko: "Suica · 교통카드", short: "Suica", jp: "交通系ICカード", ro: "Using Suica in Fukuoka",
   lead: "가지고 계신 Suica는 <b>후쿠오카 지하철·JR큐슈·니시테츠 전철과 버스에서 그대로 쓸 수 있어요</b>(전국 교통카드 상호이용). 잔액 확인과 충전도 후쿠오카 역 발매기·편의점에서 됩니다. 23개월은 무료라 카드가 필요 없고, 어른은 1명당 카드 1장이에요.",
   summary: "후쿠오카에서 쓸 수 있는 곳, 잔액 확인, 충전, 유효기간 주의",
