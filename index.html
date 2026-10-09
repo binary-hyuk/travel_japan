@@ -182,6 +182,11 @@ td.num,th.num{text-align:right}
 .item-meta{display:flex;flex-wrap:wrap;gap:4px}
 .item-caution{font-size:13px;color:var(--danger);background:var(--danger-soft);border-radius:6px;padding:6px 9px}
 .item-link{font-size:13px;margin-top:auto}
+.maplinks{font-size:13px;white-space:nowrap;display:flex;flex-wrap:wrap;gap:4px 10px}
+td.maplinks{display:table-cell;min-width:6.5em}
+th,td{min-width:5.5em}
+td:first-child,th:first-child{min-width:8.5em}
+td.maplinks a{display:block;white-space:nowrap}
 .item figure.ph{cursor:default;background:var(--sunk)}
 .item figure.ph span{font-family:var(--f-jp);font-size:20px;font-weight:700;color:var(--muted);padding:16px;text-align:center;line-height:1.5}
 @media (min-width:560px){.items:not(.wide):has(> .item:nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -387,7 +392,7 @@ const R = {
   text: b => `${b.title ? `<h3>${esc(b.title)}${tagsHtml(b.tags)}</h3>` : ""}<div class="prose">${b.html}</div>`,
   callout: b => `<div class="callout ${esc(b.tone || "")}">${b.title ? `<h3>${esc(b.title)}</h3>` : ""}<div class="prose">${b.html}</div></div>`,
   facts: b => `${h3(b)}<dl class="facts">${b.rows.map(([k, v, opt]) => `<div><dt>${esc(k)}</dt><dd>${v}${opt && opt.show ? ` <button class="mini-btn" data-show="${esc(opt.show)}" data-sub="${esc(opt.sub || "")}">크게 보기</button>` : ""}${opt && opt.copy ? ` <button class="mini-btn" data-copy="${esc(opt.copy)}">복사</button>` : ""}</dd></div>`).join("")}</dl>${noteHtml(b)}`,
-  table: b => `${h3(b)}<div class="tbl-wrap"><table><thead><tr>${b.head.map((h, i) => `<th class="${(b.numCols || []).includes(i) ? "num" : ""}">${esc(h)}</th>`).join("")}</tr></thead><tbody>${b.rows.map(r => `<tr>${r.map((c, i) => `<td class="${(b.numCols || []).includes(i) ? "num" : ""}">${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${noteHtml(b)}`,
+  table: b => `${h3(b)}<div class="tbl-wrap"><table><thead><tr>${b.head.map((h, i) => `<th class="${(b.numCols || []).includes(i) ? "num" : ""}">${esc(h)}</th>`).join("")}${b.links ? "<th>지도</th>" : ""}</tr></thead><tbody>${b.rows.map((r, ri) => `<tr>${r.map((c, i) => `<td class="${(b.numCols || []).includes(i) ? "num" : ""}">${c}</td>`).join("")}${b.links ? `<td class="maplinks">${placeLinks(b.links[ri])}</td>` : ""}</tr>`).join("")}</tbody></table></div>${noteHtml(b)}`,
   route: b => `<div class="route ${b.pick ? "pick" : ""}">
       <div class="route-head"><h3>${esc(b.title)}</h3>${tagsHtml(b.tags)}</div>
       <div class="route-sum">${(b.summary || []).map(([v, k]) => `<span><b>${esc(v)}</b>${esc(k)}</span>`).join("")}</div>
@@ -402,6 +407,7 @@ const R = {
         ${it.tags ? `<div class="item-meta">${it.tags.map(t => tagHtml(t)).join("")}</div>` : ""}
         <div class="prose">${it.html || ""}</div>
         ${it.caution ? `<div class="item-caution">${it.caution}</div>` : ""}
+        ${it.map || it.tabelog ? `<div class="maplinks">${placeLinks([it.map, it.tabelog])}</div>` : ""}
         ${it.link ? `<a class="item-link" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(it.linkLabel || "공식 페이지")} ↗</a>` : ""}
       </div></article>`).join("")}</div>${noteHtml(b)}`; },
   gallery: b => `${h3(b)}<div class="gallery">${b.images.map(im => `<figure><img src="${esc(imgSrc(im.src))}" alt="${esc(im.caption)}" loading="lazy" data-zoom="${esc(im.src)}" data-cap="${esc(im.caption + (im.credit ? " · " + im.credit : ""))}" data-src="${esc(im.srcUrl || "")}"><figcaption>${esc(im.caption)}${im.credit ? ` · ${esc(im.credit)}` : ""}</figcaption></figure>`).join("")}</div>${noteHtml(b)}`,
@@ -412,6 +418,14 @@ const R = {
   checklist: (b, sid, i) => { const keyOf = t => `chk:${sid}:${hash(textOf(t))}`; const done = b.items.filter(t => store.get(keyOf(t))).length; return `${b.title ? `<h3>${esc(b.title)}<span class="tag chk-count ${done === b.items.length ? "ok" : ""}" data-group="${esc(sid)}:${i}">${done}/${b.items.length}</span></h3>` : ""}<ul class="checks" data-group="${esc(sid)}:${i}">${b.items.map(t => { const k = keyOf(t); return `<li><label><input type="checkbox" id="${esc(k)}" data-store="${esc(k)}" ${store.get(k) ? "checked" : ""}><span>${t}</span></label></li>`; }).join("")}</ul>`; },
   checktools: () => `<div class="checktools"><button type="button" class="mini-btn" data-chk="share">체크 공유 링크 복사</button><button type="button" class="mini-btn" data-chk="clear">체크 모두 해제</button><span class="muted">체크는 이 폰 브라우저에 저장돼요. 다른 폰과 맞추려면 링크를 보내서 열게 하세요(상대 체크와 합쳐져요).</span></div>`,
 };
+function placeLinks(l) {
+  if (!l) return "";
+  const [q, tb] = Array.isArray(l) ? l : [l];
+  const out = [];
+  if (q) out.push(`<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}" target="_blank" rel="noopener">구글맵 ↗</a>`);
+  if (tb) out.push(`<a href="${esc(tb)}" target="_blank" rel="noopener">타베로그 ↗</a>`);
+  return out.join(" ");
+}
 function h3(b) { return b.title ? `<h3>${esc(b.title)}${tagsHtml(b.tags)}</h3>` : ""; }
 function noteHtml(b) { return b.note ? `<p class="note">${b.note}</p>` : ""; }
 function tagHtml(t) { const [label, tone] = Array.isArray(t) ? t : [t, ""]; return `<span class="tag ${esc(tone)}">${esc(label)}</span>`; }

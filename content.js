@@ -966,7 +966,7 @@ GUIDE.sections.push({
     { type: "callout", title: "자세한 페이지로 옮겼어요",
       html: `<p>호빵맨 뮤지엄·라라포트·아카짱혼포·장난감 미술관은 <a href="#lalaport">호빵맨 뮤지엄 · 라라포트</a>, 캐널시티는 <a href="#canal">캐널시티 하카타</a> 페이지에 있어요. 마린월드는 <a href="#marine">마린월드</a>.</p>` },
 
-    { type: "table", title: "한눈에 보기",
+    { type: "table", title: "한눈에 보기", links: [["もつ鍋 一藤 博多店", "https://tabelog.com/kr/fukuoka/A4001/A400101/40040770/"], ["福岡おもちゃ美術館"], ["ららぽーと福岡"], ["アカチャンホンポ ららぽーと福岡店"], ["アカチャンホンポ ガーデンズ千早店"], ["福岡アンパンマンこどもミュージアム"], ["キャナルシティ博多 サンプラザステージ"], ["GAP キャナルシティ博多"], ["マリンワールド海の中道"]],
       head: ["장소", "아기 동반", "아기의자·식사", "숙소에서", "판정"],
       rows: [
         ["<b>모츠나베 이치후지 하카타점</b>", "아이 동반 환영, 유모차 입장 가능", "<b>아기의자 있음</b>, 이유식 반입 가능, 개인실 많음", "도보 약 5분", `<span class="tag ok">추천</span> 개인실은 전화로`],
@@ -983,7 +983,7 @@ GUIDE.sections.push({
 
     { type: "items", wide: true, title: "모츠나베 이치후지 하카타점 · もつ鍋 一藤 博多店",
       items: [
-        { name: "모츠나베 이치후지 하카타점", jp: "福岡市博多区博多駅前2-4-16 · 092-451-7888", img: "img/place-motsunabe.jpg", credit: "모츠나베 예시 사진 · nesnad · CC BY 3.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Motsunabe_-_Japan_-_August_2014.jpg",
+        { map: "もつ鍋 一藤 博多店", tabelog: "https://tabelog.com/kr/fukuoka/A4001/A400101/40040770/", name: "모츠나베 이치후지 하카타점", jp: "福岡市博多区博多駅前2-4-16 · 092-451-7888", img: "img/place-motsunabe.jpg", credit: "모츠나베 예시 사진 · nesnad · CC BY 3.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Motsunabe_-_Japan_-_August_2014.jpg",
           tags: [["아기의자 있음", "ok"], ["개인실 82실", "sea"], ["17:00 오픈", ""], ["도보 5분", ""]],
           html: `<p><b>영업</b> 일~목 17:00–23:00, 금·토·연휴 중간날(10/11) 17:00–23:30, 부정기 휴무. 좌석 2시간제.</p>
 <p><b>요금</b> 자릿세(お通し) 1인 495엔 + 1인 1음료. 아기에게도 붙는지는 미확인이라 전화로 물어보세요. 모츠나베는 2인분부터.</p>
@@ -1055,7 +1055,7 @@ GUIDE.sections.push({
         { src: "img/udon-goboten.jpg", caption: "고보텐(우엉튀김) 우동. 어른용, 아기에겐 질겨요", credit: "Kyoww · Public domain", srcUrl: "https://commons.wikimedia.org/wiki/File:Goboten-udon.jpg" }
       ] },
 
-    { type: "table", title: "한눈에 보기", anchor: "list",
+    { type: "table", title: "한눈에 보기", anchor: "list", links: [["博多うどん酒場 和八 アミュプラザ博多"], ["大福うどん 博多1番街店"], ["博多うどんBUSHI HEARTSバスステーション博多", "https://tabelog.com/kr/fukuoka/A4001/A400101/40073569/"], ["因幡うどん 博多1番街店"], ["因幡うどん デイトス店", "https://tabelog.com/kr/fukuoka/A4001/A400101/40005857/"], ["牧のうどん 博多バスターミナル店", "https://tabelog.com/kr/fukuoka/A4001/A400101/40042204/"], ["ウエスト 祇園店 博多", "https://tabelog.com/kr/fukuoka/A4001/A400101/40005236/"], ["大地のうどん 博多駅ちかてん", "https://tabelog.com/kr/fukuoka/A4001/A400101/40035066/"], ["かろのうろん 上川端", "https://tabelog.com/kr/fukuoka/A4001/A400102/40000027/"]],
       head: ["가게", "숙소에서", "10/10~12", "10/13 아침", "기본 우동", "아기", "결제"],
       rows: [
         ["<b>博多うどん酒場 和八</b> 와핫치", "약 10분 · 아뮤플라자 くうてん 10층", "11:00~", "–", "고보텐 880엔~", `<span class="tag ok">키즈메뉴 680엔 · 아기의자</span>`, "카드·IC·QR"],
@@ -1377,7 +1377,7 @@ GUIDE.sections.push({
         ["다케오시 도서관 · 어린이 도서관", "9~21시 연중무휴, 역에서 도보 15분·택시 5분. <b>수유실(기저귀 교환 침대, 분유 온수기), 다다미 아기 휴게실, 신발 벗고 노는 ‘えほんの山’, 유모차 대여.</b> 푸드코트에 이유식 반입 가능. 낮잠 장소로도 좋아요."],
         ["미후네야마라쿠엔", "8:00~17:00, 어른 500엔(미취학 요금 표기 없음). 급경사 언덕 2곳. 단풍 축제는 11/6~12/6이라 10/12엔 이르러요."],
         ["다케오 신사 · 큰 녹나무", "역에서 택시 5분. 본전 앞 계단, 대나무 숲길 약 3분. 노면 상태 미확인이라 아기띠 권장."],
-        ["먹거리", "역 北口 カイロ堂 사가규 스키야키 도시락 1,890엔(열차에서 먹기 좋아요). 누문 근처 TKB AWARDS 다케오 버거(월요일 휴무, 공휴일 영업은 미확인)."]
+        ["먹거리", "역 北口 カイロ堂 사가규 스키야키 도시락 1,890엔(열차에서 먹기 좋아요, <a href=\"https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%82%A4%E3%83%AD%E5%A0%82%20%E6%AD%A6%E9%9B%84%E6%B8%A9%E6%B3%89%E9%A7%85\" target=\"_blank\" rel=\"noopener\">구글맵 ↗</a>). 누문 근처 TKB AWARDS 다케오 버거(월요일 휴무, 공휴일 영업은 미확인, <a href=\"https://www.google.com/maps/search/?api=1&query=TKB%20AWARDS%20%E6%AD%A6%E9%9B%84\" target=\"_blank\" rel=\"noopener\">구글맵 ↗</a>)."]
       ] },
 
     { type: "timeline", title: "추천 일정 · 10/12(월) 반나절",
@@ -1454,7 +1454,7 @@ GUIDE.sections.push({
 <li>10월은 생 아마오우(딸기) 철이 아니라 딸기 파르페는 거의 없어요. 아마오우 와라비모치 ‘博多あまび’는 10월에도 팔아요.</li>
 <li>타베로그가 접속 차단돼 아이 동반·유모차 정보는 핫페퍼·공식 사이트 기준이고, 근거가 없으면 미확인으로 적었어요. 걷는 시간은 추정치입니다.</li></ul>` },
 
-    { type: "table", title: "한눈에 보기",
+    { type: "table", title: "한눈에 보기", links: [["FUK COFFEE 祇園"], ["MUEN COFFEE 博多 御供所町"], ["REC COFFEE 博多マルイ店"], ["川端ぜんざい広場"], ["博多 鈴懸本店"], ["DACOMECCA 博多"], ["manucoffee 大名店"], ["COFFEE COUNTY Fukuoka"], ["スターバックス 福岡大濠公園店"], ["いちごや cafe TANNAL 大名店"], ["I'm donut? 福岡店"]],
       head: ["곳", "숙소에서", "10/10~13 영업", "대표 메뉴", "아기·유모차", "포장"],
       rows: [
         ["<b>FUK COFFEE</b> 祇園", "도보 5분", "매일 8~20시", "FUK 푸딩 550엔, 라테 650엔", "23석, 유모차 가능(미확인)", "O"],
@@ -1472,18 +1472,18 @@ GUIDE.sections.push({
 
     { type: "items", wide: true, title: "숙소 근처 · 걸어서",
       items: [
-        { name: "FUK COFFEE 기온점", jp: "FUK COFFEE 祇園店 · 博多区祇園町6-22", img: "img/cafe-fuk.jpg", credit: "FUK COFFEE 공식", srcUrl: "https://fuk-coffee.com/shop/fuk-coffee-2/",
+        { map: "FUK COFFEE 祇園", name: "FUK COFFEE 기온점", jp: "FUK COFFEE 祇園店 · 博多区祇園町6-22", img: "img/cafe-fuk.jpg", credit: "FUK COFFEE 공식", srcUrl: "https://fuk-coffee.com/shop/fuk-coffee-2/",
           tags: [["도보 5분", "ok"], ["8시 오픈", "sea"], ["카드·PayPay", ""]],
           html: `<p>櫛田神社前역 1분, 숙소에서 가장 가까운 스페셜티 커피. ‘HAVE A GOOD FLIGHT’ 공항 콘셉트 매장이에요. 8:00~20:00, 정기휴무 표기 없음.</p>
 <p><b>메뉴</b> 라테 650엔, FUK 푸딩 550엔, 푸딩+바닐라 아이스 670엔. 해외 관광객 줄이 꾸준하다는 2026년 9월 기사가 있어요. 23석, 유모차 가능(검색 결과 기준, 미확인).</p>
 <p><b>언제</b> 10/13 출국 전 아침 커피, 또는 아침에 푸딩 포장해서 낮잠 시간에.</p>`,
           link: "https://fuk-coffee.com/shop/fuk-coffee-2/", linkLabel: "공식 매장 페이지" },
-        { name: "MUEN COFFEE", jp: "博多区御供所町2-60 1F", img: "img/cafe-muen.jpg", credit: "にしてつニュース 캡처", srcUrl: "https://www.nishitetsu.jp/nishitetsu_news/spot_type/post-7409/",
+        { map: "MUEN COFFEE 博多 御供所町", name: "MUEN COFFEE", jp: "博多区御供所町2-60 1F", img: "img/cafe-muen.jpg", credit: "にしてつニュース 캡처", srcUrl: "https://www.nishitetsu.jp/nishitetsu_news/spot_type/post-7409/",
           tags: [["도보 7분", "ok"], ["일본풍 모던", ""], ["금·토 23시까지", ""]],
           html: `<p>祇園역 1분. 일본식 모래정원(枯山水)을 본뜬 <b>말차 가든케이크 2,000엔</b>(수량 한정)이 명물이고 티라미수 680엔, 레드라테 700엔. 오픈은 8:00(2025-11 기사) 또는 8:30(2026-03 기사)으로 엇갈려요. 연중무휴, 금·토는 23시까지. 42석.</p>
 <p>조용한 공간이라 부부 디저트 타임에 어울려요. 유모차·결제는 미확인.</p>`,
           link: "https://fukuoka-leapup.jp/gourmet/202603.74828", linkLabel: "2026년 3월 기사" },
-        { name: "하카타 스즈카케 본점", jp: "博多 鈴懸本店 · 上川端町12-20 ふくぎん博多ビル1F", img: "img/cafe-suzukake-parfait.jpg", credit: "鈴懸 공식 · すずのパフェ", srcUrl: "https://www.suzukake.co.jp/shops/honten",
+        { map: "博多 鈴懸本店", name: "하카타 스즈카케 본점", jp: "博多 鈴懸本店 · 上川端町12-20 ふくぎん博多ビル1F", img: "img/cafe-suzukake-parfait.jpg", credit: "鈴懸 공식 · すずのパフェ", srcUrl: "https://www.suzukake.co.jp/shops/honten",
           tags: [["화과자 명가", ""], ["본점 한정 파르페", "sea"], ["카드 OK", ""]],
           html: `<p>中洲川端역 직결. 과자 매장 9~19시, 카페(茶舗) 11~19시(L.O. 18:30), 휴무는 1/1~2뿐, 예약 불가.</p>
 <p><b>본점 한정 すずのパフェ 1,200엔</b>, 포장은 鈴乃最中 119엔부터. 평일 13:30에도 10팀 넘게 기다렸다는 후기가 있어 주말엔 더 길어요(대기 명단에 이름 적기).</p>
@@ -1506,7 +1506,7 @@ GUIDE.sections.push({
 
     { type: "items", wide: true, title: "택시 · 지하철로 짧게",
       items: [
-        { name: "스타벅스 후쿠오카 오호리코엔점", jp: "スターバックス 福岡大濠公園店 · 中央区大濠公園1-8", img: "img/cafe-starbucks-ohori.jpg", credit: "Hirho · CC BY 4.0 (2026-04)", srcUrl: "https://commons.wikimedia.org/wiki/File:Starbucks_Coffee_Fukuoka_%C5%8Chori_Park_The_N_side_%C5%8Chorik%C5%8Den_Ch%C5%AB%C5%8D-ku_Fukuoka_20260427.jpg",
+        { map: "スターバックス 福岡大濠公園店", name: "스타벅스 후쿠오카 오호리코엔점", jp: "スターバックス 福岡大濠公園店 · 中央区大濠公園1-8", img: "img/cafe-starbucks-ohori.jpg", credit: "Hirho · CC BY 4.0 (2026-04)", srcUrl: "https://commons.wikimedia.org/wiki/File:Starbucks_Coffee_Fukuoka_%C5%8Chori_Park_The_N_side_%C5%8Chorik%C5%8Den_Ch%C5%AB%C5%8D-ku_Fukuoka_20260427.jpg",
           tags: [["유모차 쉬움", "ok"], ["호수 뷰", "sea"], ["7~21시", ""]],
           html: `<p>大濠公園역 5번 출구 도보 8분. 실내 41석 + 테라스 32석. 공원이 평지라 유모차 산책을 겸하기 가장 무난해요. 주말엔 밖까지 줄이 서요.</p>`,
           link: "https://store.starbucks.co.jp/detail-962/", linkLabel: "매장 정보" }
@@ -1522,19 +1522,19 @@ GUIDE.sections.push({
 
     { type: "items", title: "포장해서 숙소에서 · 낮잠 시간용",
       items: [
-        { name: "博多通りもん (하카타 토리몬)", jp: "明月堂 博多駅マイング1号店 · 9~21시", img: "img/cafe-torimon.jpg", credit: "火国男児 · CC BY-SA 3.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Torimon(1).JPG",
+        { map: "明月堂 博多駅マイング", name: "博多通りもん (하카타 토리몬)", jp: "明月堂 博多駅マイング1号店 · 9~21시", img: "img/cafe-torimon.jpg", credit: "火国男児 · CC BY-SA 3.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Torimon(1).JPG",
           tags: [["6개 1,000엔", ""], ["유통기한 3~4주", "ok"]],
           html: `<p>하카타 대표 과자. 9개 1,500엔, 12개 2,000엔. 기한이 길어 선물용으로도 안전해요.</p>`,
           link: "https://www.meigetsudo.co.jp/store-map/ming01", linkLabel: "공식 매장" },
-        { name: "博多あまび (하카타 아마비)", jp: "伊都きんぐ · 博多駅マイング 9~21시 / デイトス いっぴん通り 8~21시",
+        { map: "伊都きんぐ 博多駅 マイング", name: "博多あまび (하카타 아마비)", jp: "伊都きんぐ · 博多駅マイング 9~21시 / デイトス いっぴん通り 8~21시",
           tags: [["10월에도 판매", "ok"], ["약 1,620엔", ""], ["기한 2일", "signal"]],
           html: `<p>아마오우 딸기 와라비모치. 5월 말~11월 하순 한정이라 10월에 아마오우를 맛보는 현실적인 방법이에요. どらきんぐエース(도라야키)는 연중. 카드·PayPay, 면세 불가. 가격·기한은 블로그 기준(미확인).</p>`,
           link: "https://www.itoking.jp/shohin.html", linkLabel: "공식 상품" },
-        { name: "BAKE 치즈타르트 · RINGO 애플파이", jp: "天神地下街 東4番街 / 西4番街 · 9~21시", img: "img/cafe-bake.jpg", credit: "BAKE 텐진 지하상가 · DoctorDoughnut · CC BY-SA 4.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Bake_cheese_tart_tenjin_chikagai.jpg",
+        { map: "BAKE CHEESE TART 天神地下街", name: "BAKE 치즈타르트 · RINGO 애플파이", jp: "天神地下街 東4番街 / 西4番街 · 9~21시", img: "img/cafe-bake.jpg", credit: "BAKE 텐진 지하상가 · DoctorDoughnut · CC BY-SA 4.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Bake_cheese_tart_tenjin_chikagai.jpg",
           tags: [["치즈타르트 270엔", ""], ["애플파이 450엔", ""]],
           html: `<p>둘 다 텐진 지하상가. RINGO 갓 구운 커스터드 애플파이 1개 450엔·4개 1,716엔, BAKE 오리지널 치즈타르트 270엔(2025-10~). 텐진 쪽 일정(안판만·과학관 등)과 묶어서.</p>`,
           link: "https://www.tenchika.com/shop/ringo/", linkLabel: "RINGO 텐진 지하상가" },
-        { name: "아이보리시 프렌치토스트 피낭시에", jp: "Ivorish 博多阪急店 B1F · 10~20시 · 포장 전용",
+        { map: "Ivorish 博多阪急", name: "아이보리시 프렌치토스트 피낭시에", jp: "Ivorish 博多阪急店 B1F · 10~20시 · 포장 전용",
           tags: [["6개 1,296엔", ""], ["기한 15일 이상", "ok"]],
           html: `<p>폐점한 프렌치토스트 카페 대신 남은 포장 매장. 하카타역 직결 한큐 백화점 지하라 오가며 사기 좋아요.</p>`,
           link: "https://sucreyshopping.jp/ivorish", linkLabel: "공식" }
@@ -1813,7 +1813,7 @@ GUIDE.sections.push({
 
     { type: "items", wide: true, anchor: "anpanman", title: "호빵맨(안판만) 어린이 뮤지엄",
       items: [
-        { name: "후쿠오카 안판만 어린이 뮤지엄 in 몰", jp: "福岡アンパンマンこどもミュージアムinモール · 博多リバレインモール 5·6F", img: "img/place-riverain.jpg", credit: "博多リバレインモール · Geraldshields11 · CC BY-SA 4.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Hakata_Riverain_Mall.jpg",
+        { map: "福岡アンパンマンこどもミュージアム", name: "후쿠오카 안판만 어린이 뮤지엄 in 몰", jp: "福岡アンパンマンこどもミュージアムinモール · 博多リバレインモール 5·6F", img: "img/place-riverain.jpg", credit: "博多リバレインモール · Geraldshields11 · CC BY-SA 4.0", srcUrl: "https://commons.wikimedia.org/wiki/File:Hakata_Riverain_Mall.jpg",
           tags: [["1세부터 유료", "signal"], ["이유식 OK", "ok"], ["유모차 보관", ""]],
           html: `<p><b>영업</b> 10:00–17:00(최종 입장 16:00), <b>10/11(일)만 9:30 개장</b>. 휴관은 12/31·1/1과 점검일.</p>
 <p><b>요금</b> 1세 이상 1인 2,000~2,200엔(날짜별 변동, 가격 캘린더 확인), 0세 무료 → 우리 가족 3명 6,000~6,600엔. 23개월은 유료예요.</p>
@@ -1826,7 +1826,7 @@ GUIDE.sections.push({
 
     { type: "items", wide: true, anchor: "lalaport", title: "라라포트 후쿠오카 · 장난감 미술관",
       items: [
-        { name: "후쿠오카 장난감 미술관", jp: "福岡おもちゃ美術館 · ららぽーと福岡 オーバル棟 1F", img: "img/place-toymuseum.jpg", credit: "공식 사이트 캡처", srcUrl: "https://art-play.or.jp/ftm/",
+        { map: "福岡おもちゃ美術館", name: "후쿠오카 장난감 미술관", jp: "福岡おもちゃ美術館 · ららぽーと福岡 オーバル棟 1F", img: "img/place-toymuseum.jpg", credit: "공식 사이트 캡처", srcUrl: "https://art-play.or.jp/ftm/",
           tags: [["전원 사전예약", "danger"], ["0~2세 전용 공간", "ok"], ["가족 4,400엔", ""]],
           html: `<p>나무 장난감 체험 미술관. <b>0~2세와 보호자 전용 ‘赤ちゃん木育ひろば’</b>가 있어 23개월에게 딱 맞아요. 10:00–17:00, 10/10~13 휴관 공지 없음(10/20~22 정비 휴관).</p>
 <p><b>요금(온라인)</b> 어른 1,600엔, 아이(6개월~초등) 1,200엔. 0~2세 무료 ‘赤ちゃんWeek’는 10/23~29라 이번엔 해당 없음.</p>
@@ -1834,7 +1834,7 @@ GUIDE.sections.push({
 <p><b>아기 시설</b> 아기 공간 안에 수유실 3실(온수)·기저귀 교환 코너(2024년 기사 기준). 쓴 기저귀는 가져가야 해요.</p>`,
           caution: "관내에 화장실이 없고 재입장은 화장실 갈 때만 돼요. 입장 전에 기저귀를 갈고 들어가세요. 이유식은 관내에서 못 먹고 분유·물·차만 가능.",
           link: "https://www.e-tix.jp/ftm/", linkLabel: "예약 페이지 (e-tix)" },
-        { name: "라라포트 후쿠오카", jp: "ららぽーと福岡 · 博多区那珂6-23-1", img: "img/place-lalaport-gundam.jpg", credit: "라라포트 후쿠오카 공식 캡처 · ©創通・サンライズ", srcUrl: "https://mitsui-shopping-park.com/lalaport/fukuoka/event/2718166.html",
+        { map: "ららぽーと福岡", name: "라라포트 후쿠오카", jp: "ららぽーと福岡 · 博多区那珂6-23-1", img: "img/place-lalaport-gundam.jpg", credit: "라라포트 후쿠오카 공식 캡처 · ©創通・サンライズ", srcUrl: "https://mitsui-shopping-park.com/lalaport/fukuoka/event/2718166.html",
           tags: [["택시 10~15분", ""], ["베이비 휴게실 1·2·3층", "ok"]],
           html: `<p><b>영업</b> 매장 10:00–21:00, 식당·푸드코트 11:00–22:00.</p>
 <p><b>가는 법</b> 택시 10~15분, 약 1,500~2,500엔(추정, 택시 승강장은 라라포트 버스터미널 안). JR은 博多→竹下 3분 200엔 + 도보 9분이라 유모차면 택시가 편해요.</p>
@@ -1902,7 +1902,7 @@ GUIDE.sections.push({
 <li>미즈타키 명가 <b>水たき 長野</b>는 일·월(공휴일) 휴무에 전화 예약 필수, <b>とり田</b>도 예약 필수 인기점이라 이번엔 어려워요.</li>
 <li>예약 사이트(TORETA·히토사라·resebook)가 해외 전화번호를 받는지는 미확인이에요. 안 되면 전화로.</li></ul>` },
 
-    { type: "table", title: "한눈에 보기 (아기 친화도 순)",
+    { type: "table", title: "한눈에 보기 (아기 친화도 순)", links: [["鼎泰豊 アミュプラザ博多店"], ["ぶどうの樹 アミュプラザ博多"], ["Nine Doors Restaurant & Grill 博多"], ["グリル大宮 アミュプラザ博多店"], ["博多水たき 濵田屋 くうてん"], ["博多華味鳥 KITTE博多店"], ["釜のうさぎ アミュプラザ博多"], ["長浜ナンバーワン 博多デイトス店"], ["博多華味鳥 博多駅前店"]],
       head: ["가게", "위치 · 숙소에서", "저녁 영업", "아기", "예약", "어른 1인"],
       rows: [
         ["<b>鼎泰豊</b> 딘타이펑", "AMU 9층 くうてん · 10~12분", "매일 ~22:00", "키즈 면·볶음밥 세트 각 1,100엔, 아기의자", "온라인은 코스만, 단품은 현장 대기", "2,500엔~"],
@@ -2426,7 +2426,7 @@ GUIDE.sections.push({
       ],
       note: "지하1층 선플라자 스테이지. 스테이지 앞이 평지라 유모차로 보기 가장 편하고, 2·3층 난간 가운데는 통로가 좁아요. 쇼가 끝나기 2~3분 전에 엘리베이터 쪽으로 움직이면 덜 붐벼요(2026-07 블로그 팁)." },
 
-    { type: "table", title: "아기랑 먹을 곳 (캐널시티 안)", anchor: "food",
+    { type: "table", title: "아기랑 먹을 곳 (캐널시티 안)", anchor: "food", links: [["とんかつ新宿さぼてん キャナルシティ博多"], ["ピエトロ キャナルシティ博多"], ["電光石火 キャナルシティ博多"], ["Eggs 'n Things 博多 キャナルシティ"], ["しゃぶ葉 キャナルシティ博多"], ["うまや キャナルシティ博多"], ["サイゼリヤ キャナルシティ博多"], ["ラーメンスタジアム キャナルシティ博多"]],
       head: ["식당", "위치", "키즈메뉴", "아기의자", "영업 · 메모"],
       rows: [
         ["<b>とんかつ新宿さぼてん</b> 돈카츠 사보텐", "노스빌 지하1층", "있음 (가격 미확인)", "있음", "11:00~23:00 · 58석"],
