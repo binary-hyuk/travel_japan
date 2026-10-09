@@ -73,6 +73,8 @@ window.GUIDE = {
         html: `<p><b class="num">10/13 12:10</b> 출발 → 숙소에서 <b>9:30쯤</b> 나서기</p>` },
       { label: "아기가 아플 때 (한국어)", big: `<span class="num">119</span> · <span class="num">092-733-5429</span>`,
         html: `<p>구급차 119(한국어 통역 연결) · 의료통역 콜센터 24시간. <a href="#baby--emergency">연락처 전체 보기</a></p>` },
+      { label: "웹티켓", big: "호빵맨 10/10 · 장난감 미술관 10/12",
+        html: `<p><b>호빵맨</b> <a href="https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5" target="_blank" rel="noopener">CLOUD PASS(공식) ↗</a> · <a href="https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/" target="_blank" rel="noopener">Klook 한국어 ↗</a><br>당일 16시까지 판매, CLOUD PASS는 당일 16시까지 무료 취소</p><p><b>장난감 미술관</b> <a href="https://www.etix.com/kketix/e/2009032?&cobrand=ftm&country=JP&language=ja" target="_blank" rel="noopener">예약(날짜 선택) ↗</a> · <a href="https://www.e-tix.jp/ftm/" target="_blank" rel="noopener">안내·취소 ↗</a><br>전원 예약, 당일 9시까지 무료 취소</p>` },
       { label: "이동 원칙", big: "JR·지하철 + 가까운 곳은 택시",
         html: `<p>아기 동반이라 버스·페리는 뺐어요. 지하철·JR은 카드 터치 OK(카드 1장 = 1명).</p>` }
     ],
@@ -180,7 +182,7 @@ GUIDE.sections.push({
         { time: "", title: "1층에서 ATM · 와이파이 수령 · 수유실/기저귀" },
         { time: "~12:15", title: "택시 승차 → 약 20분" },
         { time: "~12:40", title: "숙소 프런트에 짐 맡기기", html: "<p>점심은 하카타역 쪽(도보 7분)으로</p>" },
-        { time: "13:40", title: "호빵맨 뮤지엄으로 (걸어서 15~20분 · 지하철 1정거장)", html: "<p>최종 입장 16:00. 웹티켓은 당일 16시까지 팔아서 입국심사 끝나고 사면 돼요. 입국이 많이 늦어지면 건너뛰고 쉬어도 돼요. <a href=\"#lalaport--days\">호빵맨 동선</a></p>" },
+        { time: "13:40", title: "호빵맨 뮤지엄으로 (걸어서 15~20분 · 지하철 1정거장)", html: "<p>최종 입장 16:00. 웹티켓은 당일 16시까지 팔아서 입국심사 끝나고 사면 돼요(<a href=\"https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5\" target=\"_blank\" rel=\"noopener\">CLOUD PASS</a> · <a href=\"https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/\" target=\"_blank\" rel=\"noopener\">Klook 한국어</a>). 입국이 많이 늦어지면 건너뛰고 쉬어도 돼요. <a href=\"#lalaport--days\">호빵맨 동선</a></p>" },
         { time: "16:00", title: "체크인 → 17:00 모츠나베 이치후지" }
       ] },
 
@@ -843,7 +845,7 @@ GUIDE.sections.push({
       items: [
         "숙소에 전화(092-431-8702) 또는 체크인 때: 베이비가드 대여 요청 + 공용 전자레인지 위치·이용 시간 확인",
         "<a href=\"#dinner--ichifuji\">모츠나베 이치후지</a> 10/10 17:00 예약",
-        "<a href=\"#lalaport--plan-b\">장난감 미술관</a> 10/12 10:00 예약 (당일 9시까지 무료 취소) · 호빵맨 웹티켓은 10/10 날짜로, 입국 후 사도 됨 (Klook 한국어 가능)",
+        "<a href=\"https://www.etix.com/kketix/e/2009032?&cobrand=ftm&country=JP&language=ja\" target=\"_blank\" rel=\"noopener\">장난감 미술관</a> 10/12 10:00 예약 (당일 9시까지 무료 취소) · <a href=\"https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5\" target=\"_blank\" rel=\"noopener\">호빵맨 웹티켓</a>은 10/10 날짜로, 입국 후 사도 됨 (<a href=\"https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/\" target=\"_blank\" rel=\"noopener\">Klook 한국어</a> 가능)",
         "Visit Japan Web 등록 (입국심사·세관신고 QR, 아기는 동반 가족으로)",
         "여행자보험 가입 확인, 증권과 보험사 긴급번호를 휴대폰에 저장",
         "응급 연락처 저장: 119 / 092-733-5429 (의료통역) / 050-3816-2787 (JNTO)",
@@ -977,9 +979,9 @@ GUIDE.sections.push({
 
     { type: "callout", tone: "warn", title: "지금 바로 해 둘 것 (3연휴라 마감 위험)",
       html: `<ol>
-<li><b>호빵맨 뮤지엄 웹티켓</b> · 날짜 지정(시간 지정 없음), 이번엔 <b>10/10(토) 오후</b>예요. 온라인은 당일 16시까지 팔아서 입국심사 끝나고 사도 돼요. Klook 한국어 페이지에서도 살 수 있고 매표소 당일권도 있어요.</li>
+<li><b>호빵맨 뮤지엄 웹티켓</b> · 날짜 지정(시간 지정 없음), 이번엔 <b>10/10(토) 오후</b>예요. 온라인은 당일 16시까지 팔아서 입국심사 끝나고 사도 돼요. <a href="https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5" target="_blank" rel="noopener">CLOUD PASS(공식) ↗</a> · <a href="https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/" target="_blank" rel="noopener">Klook 한국어 ↗</a>, 매표소 당일권도 있어요.</li>
 <li><b>모츠나베 이치후지 10/10(토) 17:00 예약</b> · 웹 예약은 좌석을 고를 수 없어요. 개인실·아기의자·아기 자릿세를 전화로 확인(<span class="num">092-451-7888</span>, 일본어) 또는 해외 고객용 메일 <span class="num">yoyaku-hakata@ichifuji-f.jp</span>.</li>
-<li><b>장난감 미술관 10/12 10:00</b> · 무료 입장자까지 전원 온라인 예약. <b>당일 9:00까지 수수료 없이 취소</b>되니 지금 잡아 두세요 → <a href="#lalaport--day12">라라포트 날 일정</a>.</li></ol>` },
+<li><b>장난감 미술관 10/12 10:00</b> · <a href="https://www.etix.com/kketix/e/2009032?&cobrand=ftm&country=JP&language=ja" target="_blank" rel="noopener">예약(날짜 선택) ↗</a> · 무료 입장자까지 전원 온라인 예약. <b>당일 9:00까지 수수료 없이 취소</b>되니 지금 잡아 두세요 → <a href="#lalaport--day12">라라포트 날 일정</a>.</li></ol>` },
 
     { type: "callout", title: "자세한 페이지로 옮겼어요",
       html: `<p>모츠나베 이치후지는 <a href="#dinner--ichifuji">저녁 맛집</a>, 호빵맨 뮤지엄·라라포트·아카짱혼포·장난감 미술관은 <a href="#lalaport">호빵맨 뮤지엄 · 라라포트</a>, 캐널시티는 <a href="#canal">캐널시티 하카타</a> 페이지에 있어요. 마린월드는 <a href="#marine">마린월드</a>.</p>` },
@@ -1800,14 +1802,14 @@ GUIDE.sections.push({
 
     { type: "callout", tone: "warn", title: "표 사는 순서",
       html: `<ul>
-<li><b>호빵맨 웹티켓 · 10/10</b> · 날짜 지정, 시간 지정 없음(오픈~16시 아무 때나 입장). 온라인은 <b>당일 16시까지</b> 팔아서 <b>입국심사 끝나고 사도 돼요</b>. 비행기가 늦거나 아기가 지쳐 못 가도 손해가 없어요. 날짜 변경·환불 규정은 확인하지 못했어요. 매표소 당일권도 있어요.</li>
-<li><b>장난감 미술관 · 10/12</b> · 무료 입장자까지 전원 사전예약이고 <b>당일 9:00까지 수수료 없이 취소</b>돼요. 지금 10:00으로 잡아 두고, 대안으로 바뀌면 취소하고 10/11로 다시 사면 돼요(날짜 변경은 취소 후 재구매). 10/9 확인 때 10/12는 예약 가능했어요.</li>
+<li><b>호빵맨 웹티켓 · 10/10</b> · <a href="https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5" target="_blank" rel="noopener">CLOUD PASS(공식) ↗</a> · <a href="https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/" target="_blank" rel="noopener">Klook 한국어 ↗</a>. 날짜 지정, 시간 지정 없음(오픈~16시 아무 때나 입장). 온라인은 <b>당일 16시까지</b> 팔아서 <b>입국심사 끝나고 사도 돼요</b>. CLOUD PASS는 <b>당일 16시까지 무료 취소</b>(날짜 변경은 취소 후 재구매), Klook 취소 규정은 Klook 페이지 기준. CLOUD PASS는 처음에 계정 만들기와 카드 3D Secure 인증이 필요해요. 매표소 당일권도 있어요.</li>
+<li><b>장난감 미술관 · 10/12</b> · <a href="https://www.etix.com/kketix/e/2009032?&cobrand=ftm&country=JP&language=ja" target="_blank" rel="noopener">예약(날짜 선택) ↗</a> · <a href="https://www.e-tix.jp/ftm/" target="_blank" rel="noopener">안내·취소 ↗</a>. 무료 입장자까지 전원 사전예약이고 <b>당일 9:00까지 수수료 없이 취소</b>돼요. 지금 10:00으로 잡아 두고, 대안으로 바뀌면 취소하고 10/11로 다시 사면 돼요(날짜 변경은 취소 후 재구매). 10/9 확인 때 10/12는 예약 가능했어요.</li>
 <li>마린월드 온라인 티켓(asoview)도 날짜 지정이고 이용 당일 16:30 이후 취소 수수료 100%라, 현장 매표소에서 사도 돼요.</li>
 <li>모츠나베 이치후지(10/10 17:00 예약)는 그대로예요.</li></ul>` },
 
     { type: "timeline", anchor: "days", title: "기본 일정 · 10/10 호빵맨 → 10/11 마린월드 → 10/12 라라포트",
       items: [
-        { time: "12:40", title: "10/10 토 · 숙소에 짐 맡기고 점심", html: "<p>입국심사 끝나면 호빵맨 웹티켓(10/10) 구매. <a href=\"#airport--arrive\">도착일 흐름</a></p>" },
+        { time: "12:40", title: "10/10 토 · 숙소에 짐 맡기고 점심", html: "<p>입국심사 끝나면 호빵맨 웹티켓(10/10) 구매: <a href=\"https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5\" target=\"_blank\" rel=\"noopener\">CLOUD PASS</a> · <a href=\"https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/\" target=\"_blank\" rel=\"noopener\">Klook 한국어</a>. <a href=\"#airport--arrive\">도착일 흐름</a></p>" },
         { time: "13:40", title: "숙소 → 호빵맨 뮤지엄 (걸어서 15~20분)", html: "<p>구시다 신사 → 지붕 있는 가와바타 상점가를 따라 걸으면 리버레인이에요. 유모차에서 낮잠 재우기 좋아요. 지하철이면 祇園역(6번 출구 엘리베이터) → 中洲川端역 1정거장. <b>15시까지 明治通り가 자전거 대회로 통제</b>라 택시는 피하세요.</p>" },
         { time: "14:00", title: "호빵맨 뮤지엄 (최종 입장 16:00 · 17시 폐관)", html: "<p>유모차는 5층에 맡기고 아기띠로. 아기가 자고 있으면 깰 때까지 리버레인에서 쉬다 들어가도 돼요(시간 지정 없음).</p>" },
         { time: "15:45", title: "지하철 1정거장으로 숙소 → 체크인 · 휴식", html: "<p>걸어서 돌아오면 가와바타 젠자이 광장(단팥죽, 11~18시)·스즈카케 본점(화과자)을 지나요.</p>" },
@@ -1844,7 +1846,7 @@ GUIDE.sections.push({
           tags: [["1세부터 유료", "signal"], ["이유식 OK", "ok"], ["유모차 보관", ""]],
           html: `<p><b>영업</b> 10:00–17:00(최종 입장 16:00), <b>10/11(일)만 9:30 개장</b>. 휴관은 12/31·1/1과 점검일.</p>
 <p><b>요금</b> 1세 이상 1인 2,000~2,200엔(날짜별 변동, 가격 캘린더 확인), 0세 무료 → 우리 가족 3명 6,000~6,600엔. 23개월은 유료예요.</p>
-<p><b>표 사기</b> 날짜 지정 웹티켓(시간 지정 없음, 오픈~16시 아무 때나 입장). CLOUD PASS에서 팔고 <b>Klook 한국어 페이지</b>도 있어요. 처음엔 계정 만들기, 입장 땐 스마트폰 필요. 온라인은 <b>당일 16시까지</b>, 매표소 당일권도 있어요(현금·카드·QR). 당일 재입장 가능.</p>
+<p><b>표 사기</b> 날짜 지정 웹티켓(시간 지정 없음, 오픈~16시 아무 때나 입장). <a href="https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5" target="_blank" rel="noopener">CLOUD PASS(공식)</a>에서 팔고 <a href="https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/" target="_blank" rel="noopener"><b>Klook 한국어 페이지</b></a>도 있어요. CLOUD PASS는 당일 16시까지 무료 취소. 처음엔 계정 만들기, 입장 땐 스마트폰 필요. 온라인은 <b>당일 16시까지</b>, 매표소 당일권도 있어요(현금·카드·QR). 당일 재입장 가능.</p>
 <p><b>아기</b> 유모차는 안에 못 가지고 들어가고 5층에 보관. 이유식 반입 가능, 5층에 전자레인지·80℃ 온수.</p>
 <p><b>가는 법</b> 지하철 공항선 祇園역(6번 출구 엘리베이터)에서 1정거장 中洲川端역. 택시면 약 10분.</p>`,
           caution: "10/10(토) 10:00~15:00에는 바로 앞 明治通り가 자전거 대회로 통제돼요. 이번 일정(10/10 오후)은 걸어서나 지하철로.",
@@ -1897,6 +1899,9 @@ GUIDE.sections.push({
     { label: "안판만 뮤지엄 · Q&A", url: "https://www.fukuoka-anpanman.jp/qa/" },
     { label: "안판만 뮤지엄 · 오시는 길", url: "https://www.fukuoka-anpanman.jp/access/" },
     { label: "안판만 뮤지엄 · 10/10 교통 통제 안내", url: "https://www.fukuoka-anpanman.jp/news/article/xpmltnis4c58jz6k.html" },
+    { label: "안판만 뮤지엄 · CLOUD PASS 구매", url: "https://cloud-pass.jp/get/b5cb77753d08d4f68e27e53a389360ee44c986efeca7b6006b0aa28a27e68df5" },
+    { label: "안판만 뮤지엄 · Klook 한국어", url: "https://www.klook.com/ko/activity/123135-fukuoka-anpanman-children-s-museum-in-mall-ticket/" },
+    { label: "후쿠오카 장난감 미술관 · 날짜 선택 (etix)", url: "https://www.etix.com/kketix/e/2009032?&cobrand=ftm&country=JP&language=ja" },
     { label: "라라포트 후쿠오카 · 영업시간", url: "https://mitsui-shopping-park.com/lalaport/fukuoka/hour/" },
     { label: "라라포트 후쿠오카 · 엔터테인먼트 시설 목록", url: "https://mitsui-shopping-park.com/lalaport/fukuoka/special/entertainment/all/" },
     { label: "라라포트 후쿠오카 · 베이비 휴게실", url: "https://mitsui-shopping-park.com/lalaport/fukuoka/service/baby.html" },
