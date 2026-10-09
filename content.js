@@ -767,6 +767,7 @@ GUIDE.sections.push({
         ["세탁", "4층 코인세탁기 · 자판기 · 제빙기"],
         ["객실", "<b>전기포트(湯沸かしポット)·냉장고 있음</b>(라쿠텐트래블 시설 정보) → 우유 보관 OK. 가습기, 변압기 대여도 있어요. 전자레인지는 객실에 없어요."],
         ["대여 물품", "베이비 코트, 베이비가드, <b>체온계</b>, 우산, 담요 등(한큐교통사 표기). 수량이 적으니 미리 요청."],
+        ["객실 어메니티", "공식 객실 안내 기준 <b>칫솔세트(歯ブラシセット)·면도기(髭剃り)·쉐이빙크림</b>, 헤어브러시, 면봉, 화장솜, 바디워시·샴푸·린스, 잠옷, 생수가 객실 비품이에요(유료 표시 없음). 치약은 칫솔세트에 같이 들어 있는 게 보통이지만 공식 표기엔 따로 없고, 여행사 표기는 ‘ハミガキセット·カミソリ’. 로비 어메니티 바 안내는 없어요. 방에 없으면 프런트에 물어보세요(아래 회화)."],
         ["어린이 어메니티", "없다는 FAQ 검색 결과가 있어요(원문 페이지 접속 불가). 아기 세정제·칫솔은 챙겨 가세요."]
       ] },
 
@@ -816,6 +817,8 @@ GUIDE.sections.push({
     { label: "JR博多シティ · ドラッグイレブン アミュプラザ博多店", url: "https://www.jrhakatacity.com/floor/detail/?cd=000046" },
     { label: "HugKum · 외식 때 이유식 매너", url: "https://hugkum.sho.jp/120641" },
     { label: "THE BLOSSOM HAKATA Premier · 시설", url: "https://www.jrk-hotels.co.jp/Hakata_premier/facilities" },
+    { label: "THE BLOSSOM HAKATA Premier · 객실 (어메니티 목록)", url: "https://www.jrk-hotels.co.jp/Hakata_premier/rooms/" },
+    { label: "긴키닛폰투어리스트 · 객실 설비 (ハミガキセット·カミソリ)", url: "https://yado.knt.co.jp/st/S400286/" },
     { label: "라쿠텐트래블 · 숙소 시설·객실 비품", url: "https://travel.rakuten.co.jp/HOTEL/172876/172876.html" },
     { label: "숙박 후기 · 4층 전자레인지 (Merry's Blog 2023)", url: "https://www.sunflower08.work/the-blossom-hakata-premier" },
     { label: "숙박 후기 · 전자레인지 (fishand.tips 2025)", url: "https://fishand.tips/hotel/The_Blossom_Hakata_Premier/" },
@@ -2229,6 +2232,11 @@ window.GUIDE.phrasebook = [
     "ko": "변압기를 빌릴 수 있나요?",
     "jp": "変圧器を借りられますか？",
     "pron": "헨아츠키오 카리라레마스카?"
+   },
+   {
+    "ko": "칫솔 하나 더 받을 수 있나요?",
+    "jp": "歯ブラシをもう一つもらえますか？",
+    "pron": "하부라시오 모- 히토츠 모라에마스카?"
    },
    {
     "ko": "우산을 빌릴 수 있나요?",
